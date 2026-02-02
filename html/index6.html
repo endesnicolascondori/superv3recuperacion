@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Errores en el Procedimiento</title>
+    <!-- Enlazar los archivos CSS de Bootstrap -->
+    <link href="../recursos/css/bootstrap.min.css" rel="stylesheet" >
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        box-sizing: border-box;
+        margin-top: 80px;
+    }
+
+    #image-container {
+        height: 100vh;
+        overflow: auto;
+    }
+
+    .image img {
+        width: 100%;
+        /* object-fit: cover; */
+    }
+
+    .image {
+        height: 100%; 
+        margin-bottom: 20px;
+        background-color: lightgray;
+        /* background-image: none!important; */
+        display: flex;  
+    }
+
+
+    /* *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    } */
+    button.btn.rounded-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        fill: white;
+        width: 40px;
+        height: 40px;
+    }
+
+    .caja {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    div.posicionboton {
+        position: absolute;
+        /* transform: translate(0, -50%); */
+        right: 0.3rem;
+        top: 0.3rem;
+        /* opacity: 0.75; */
+    }
+   
+
+    .dev {
+        height: 100vh;
+        overflow-y: scroll;
+        width: 100%;
+    }
+
+
+    button.btn.btn-sm.btn-danger {
+        fill: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        margin-top: 0.3rem;
+    }
+    .input-group-text {
+        justify-content: space-between;
+        background-color: #bfbfbf;
+        /* border: 0;
+        border-radius: 0;
+        border-bottom: 1px solid white; */
+        grid-gap: 0.2rem;
+        padding: 0.375rem 0.4rem!important;
+        flex-direction: column;
+    }
+    /* .caj{
+        display: flex;
+    } */
+
+    .form-check-input {
+        width: 1.4em;
+        height: 1.4em;
+    }
+
+
+
+
+    /******/
+
+
+    .dropdown-toggle::before{
+        content: none!important;
+    }
+
+    /* .accordion-button {
+        padding: 0.4rem!important;
+    } */
+
+    .accordion-button::after {
+
+        transform: scale(0.6)!important;
+    }
+
+    .dropdown-menu {
+        min-width: 13rem!important;
+    }
+
+    .accordion-body {
+        padding: 0;
+    }
+    li.list-group-item {
+        font-size: 0.8rem;
+    }
+
+
+    button#dropdownMenuClickableInside {
+        display: flex;
+        background-color: #db69a2;
+        padding: 10px;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+
+
+
+    .accordion-button:not(.collapsed) {
+        color: #ffffff;
+        background-color: #db69a2;
+        box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+    }
+
+    .btn-danger {
+        color: #fff;
+        background-color: #db69a2;
+        border-color: #db69a2;
+    }
+
+    .btn-danger:hover {
+        color: #fff;
+        background-color: #db69a2;
+        border-color: #db69a2;
+    }
+
+    .form-check-input:checked {
+        background-color: #573b8a;
+        border-color: #573b8a;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #573b8a;
+        border-color: #573b8a;
+    }
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #573b8a;
+        border-color: #573b8a;
+    }
+
+    .list-group-item {
+        padding:0px;
+    }
+
+    .dropdown-item:focus, .dropdown-item:hover {
+        color: #1e2125;
+        background-color: #dc35452b;
+    }
+
+    .accordion-button::after {
+        filter: invert(1);
+    }
+
+    .dropdown-item {
+        padding: 0.5rem 1.5rem;
+    }
+
+    .col.flex {
+        display: flex;
+        flex-direction: column;
+        grid-gap: 0.4rem;
+    }
+
+
+
+    .form-check.espa {
+        display: flex;
+        grid-gap: 0.5rem;
+        align-items: center;
+    }
+
+
+    nav.navbar.navbar-light.bg-light {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        position: absolute;
+        width: 100%;
+    }
+    ol.breadcrumb {
+        align-items: center;
+        font-size: 0.8rem;
+        margin-bottom: 0px;
+    }
+
+
+    @media only screen and (max-width: 420px) {
+        /* .main {
+            width: 85%;
+        } */
+        ol.breadcrumb {
+            font-size: 0.5rem;
+        }
+        .navbar-brand {
+            margin-right: 0px!important;
+        }
+
+    }
+
+
+
+    thead {
+        font-size: 0.9rem;
+    }
+    table button.btn.btn-primary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        fill: white;
+        margin: auto;
+    }
+
+    .form-check.form-switch {
+        display: flex;
+        justify-content: center;
+    }
+
+    h5#modalTitle {
+        font-size: 0.9rem;
+    }
+
+    .tuClase{
+        pointer-events: none;
+        opacity: 0.6;
+    }
+</style>
+<body>
+
+    <div class="caja">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+              <a class="navbar-brand" href="index5.html">
+                <!-- <img src="https://aplications.inei.gob.pe/WebEndesEncuesta/public/img/endes_logo.png" alt="" width="30" height="30"> -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                </svg>
+              </a>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item" id="nomencu">SANDY GABRIELA ALVA CACHIQUE</li>
+                  <li class="breadcrumb-item" id="nomeconglo">4268</li>
+                  <li class="breadcrumb-item" id="nomevivi">001</li>
+                  <li class="breadcrumb-item" id="nomehog">01</li>
+                </ol>
+              </nav>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="container mt-5">
+        <!-- <h2 class="text-center">No CumpleES EN EL PROCEDIMIENTO</h2> -->
+        <div class="table-responsive">
+
+            <table class="table table-striped ">
+                <thead class="table-light table-dark">
+                  <tr>
+                    <th scope="col">A</th>
+                    <th scope="col">Medición de la Presión Arterial</th>                        
+                    <th scope="col">No Cumple</th>                        
+                    <th scope="col">Observación</th>
+                  </tr>
+                </thead>
+                <tbody data-bd="csmedipres" class="tdobyprev">
+                    <tr data-id="0">
+                        <th scope="row"></th>
+                        <td colspan="2" class="align-middle">No Observó</td>
+                        <td colspan="1" class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault" data-oculto="check">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr data-id="1">
+                        <th scope="row">1</th>
+                        <td>Explica brevemente a la/al entrevistada/o los pasos y recomendaciones a seguir en la medición de la presión arterial.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault" >
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <tr data-id="2">
+                        <th scope="row" >2</th>
+                        <td>Orienta la posición y forma de sentarse de la/del entrevistada/o/a en la silla, con los pies sobre el suelo, donde estará en reposo por lo menos 5 minutos.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault" >
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="3">
+                        <th scope="row">3</th>
+                        <td>Indica a la/el entrevistada/o se quite el reloj o pulsera del brazo a medir, además no tener el celular en el bolsillo del pantalón o camisa/blusa para no interferir en la medición. </td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault" >
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="4">
+                        <th scope="row">4</th>
+                        <td> Verifique que el tubo de aire no cuelgue, no esté enrollado ni presionado.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch ">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault" >
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="5">
+                        <th scope="row">5</th>
+                        <td>Realiza la toma de la presión arterial e inmediatamente registra en la Tablet (1ra toma); además, registra la hora de la toma en la pregunta 221A y apaga el tensiómetro (Stop).</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault" >
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="6">
+                        <th scope="row">6</th>
+                        <td>Espera 2 minutos y procede a realizar la segunda toma en el mismo brazo y realiza el registro respectivo en el recuadro que corresponde a la 2da toma. Apaga y guarda el equipo.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input  switchclass" type="checkbox" id="flexSwitchCheckDefault" >
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+
+                </tbody>
+            </table>
+
+            <table class="table table-striped ">
+                <thead class="table-light table-dark">
+                    <tr >
+                    <th scope="col">B</th>
+                    <th colspan="3">Auxiliar de Antropometría y Hemoglobina</th>
+                    </tr>  
+                    <tr>
+                    <th scope="col">a</th>
+                    <th scope="col">Longitud y peso: en niñas y niños menores de 2 años</th>                        
+                    <th scope="col">No Cumple</th>                        
+                    <th scope="col">Observación</th>
+                    </tr>
+                </thead>
+                <tbody data-bd="chantrohemo" class="tdobyprev">
+                    <tr data-id="0">
+                        <th scope="row"></th>
+                        <td colspan="2" class="align-middle">No Observó</td>
+                        <td colspan="1" class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault" data-oculto="check">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr data-id="lp1">
+                        <th scope="row">1</th>
+                        <td>Colabora con la antropometrista para quitar los zapatos, gorros, moños, ganchos y en el objetivo que el menor tenga la menor cantidad de ropa posible</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <tr data-id="lp2">
+                        <th scope="row" >2</th>
+                        <td>Registra adecuadamente el valor del peso.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="lp3">
+                        <th scope="row">3</th>
+                        <td>Se ubica arrodillada detrás de la base del tallímetro con las rodillas pegadas a la base del tallímetro.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="lp4">
+                        <th scope="row">4</th>
+                        <td>Con los brazos rectos sujetando la cabeza. Con las manos ahuecadas sujeta la cabeza de la niña /o colocando sus dedos medios en la base del cráneo de la cabeza de la niña/o.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="lp5">
+                        <th scope="row">5</th>
+                        <td>Ubica el plano de Frankfort: el orbital (borde inferior de la cuenca del ojo) está en el mismo plano horizontal que la muesca superior del trago de la oreja, asegurando que sus órbitas estén sobre las órbitas de la niña o niño de forma paralela al tablero.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="lp6">
+                        <th scope="row">6</th>
+                        <td>Indica si la cabeza toca la base, si los hombros, cadera están alineados y si el niñ@ está alineado.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="lp7">
+                        <th scope="row">7</th>
+                        <td>Mantiene el plano de Frankfort ubicado por la antropometrista.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="lp8">
+                        <th scope="row">8</th>
+                        <td>Responde "lista" después de verificar que el niñ@ está alineado.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="lp9">
+                        <th scope="row">9</th>
+                        <td>Registra adecuadamente el valor de la longitud.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                </tbody>
+            
+                <thead class="table-light table-dark"> 
+                    <tr>
+                        <th scope="col">b</th>
+                        <th scope="col">Estatura y peso: en niñas y niños de 2 años a más</th>                        
+                        <th scope="col">No Cumple</th>                        
+                        <th scope="col">Observación</th>
+                    </tr>
+                </thead>
+                <tbody data-bd="chantrohemo" class="tdobyprev">
+                    <tr data-id="0">
+                        <th scope="row"></th>
+                        <td colspan="2" class="align-middle">No Observó</td>
+                        <td colspan="1" class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault" data-oculto="check">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr data-id="ep1">
+                        <th scope="row">1</th>
+                        <td>Sujeta y levanta al niñ@ por el torso y debajo de los brazos para que la antropometrista lo pueda ubicar al centro de la balanza.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <tr data-id="ep2">
+                        <th scope="row" >2</th>
+                        <td>Permanece detrás del niñ@ con los brazos abiertos y a la altura del cuerpo del niñ@ como protección.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="ep3">
+                        <th scope="row">3</th>
+                        <td>Registra adecuadamente el valor del peso en la tablet.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="ep4">
+                        <th scope="row">4</th>
+                        <td>Se arrodilla sobre ambas rodillas al lado derecho del niñ@, y en diagonal al tallimetro (sin interrumpir la posición de la antropometrista).	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="ep5">
+                        <th scope="row">5</th>
+                        <td>Acomodan entre ambas los pies del niñ@.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="ep6">
+                        <th scope="row">6</th>
+                        <td>Coloca los pies del niñ@ en medio del tallímetro, las rodillas juntas sin montarlas, los pies estén en el centro de la base, con los talones y pantorrillas tocando la base y tablero del tallímetro respectivamente.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="ep7">
+                        <th scope="row">7</th>
+                        <td>Mantiene los brazos extendidos, la mano derecha con los dedos juntos y estirados por encima del empeine de los pies del niñ@ y la mano izquierda sobre las rodillas ejerciendo ligera presión.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="ep8">
+                        <th scope="row">8</th>
+                        <td>Avisa a la antropometrista que el niñ@ se encuentra listo para que lo pueda ubicar.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="ep9">
+                        <th scope="row">9</th>
+                        <td>Responde "lista" a la pregunta de la antropometrista para que ella pueda tomar la medida.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="ep10">
+                        <th scope="row">10</th>
+                        <td>Registra adecuadamente el valor de la estatura.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                </tbody>
+            
+                <thead class="table-light table-dark"> 
+                    <tr>
+                        <th scope="col">c</th>
+                        <th scope="col">Determinación de hemoglobina</th>                        
+                        <th scope="col">No Cumple</th>                        
+                        <th scope="col">Observación</th>
+                    </tr>
+                </thead>
+                <tbody data-bd="chantrohemo" class="tdobyprev">
+                    <tr data-id="0">
+                        <th scope="row"></th>
+                        <td colspan="2" class="align-middle">No Observó</td>
+                        <td colspan="1" class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault" data-oculto="check">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr data-id="dh1">
+                        <th scope="row">1</th>
+                        <td>Se calza los guantes antes de sujetar la pierna del niñ@ (menor de 1 año) o antes de sujetar el brazo, codo, muñeca y/o dedos del niñ@ (de un año a más).</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <tr data-id="dh2">
+                        <th scope="row" >2</th>
+                        <td>Sujeta la pierna del niñ@ menos a 1 año o el brazo, codo, muñeca y dedos (de un año a más) de tal manera que pueda facilitar la limpieza, punción y recojo de la muestra sin ejercer presión.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="dh3">
+                        <th scope="row">3</th>
+                        <td>Registra adecuadamente el valor de hemoglobina, hora y fecha de medición.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            
+                <thead class="table-light table-dark"> 
+                    <tr>
+                        <th scope="col">d</th>
+                        <th scope="col">Perímetro abdominal</th>                        
+                        <th scope="col">No Cumple</th>                        
+                        <th scope="col">Observación</th>
+                    </tr>
+                </thead>
+                <tbody data-bd="chantrohemo" class="tdobyprev">
+                    <tr data-id="0">
+                        <th scope="row"></th>
+                        <td colspan="2" class="align-middle">No Observó</td>
+                        <td colspan="1" class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault" data-oculto="check">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr data-id="pa1">
+                        <th scope="row">1</th>
+                        <td>Apoya a sujetar el polo levantado con los ganchos.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <tr data-id="pa2">
+                        <th scope="row" >2</th>
+                        <td>Se ubica detrás del evaluado y tiene el marcador de piel y la cinta métrica.</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="pa3">
+                        <th scope="row">3</th>
+                        <td>Apoya a la antropometrista entregando y recibiendo el marcador de piel y la cinta las veces que sea necesario.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="pa4">
+                        <th scope="row">4</th>
+                        <td>Apoyará presionando ligeramente con el dedo índice a la altura del cero de la cinta métrica y sobre la tercera marcación facilitando que la antropometrista realice la marcación del punto medio.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="pa5">
+                        <th scope="row">5</th>
+                        <td>Apoya el paso de la cinta métrica alrededor del cuerpo del evaluado sin que esta roce su piel, hasta lograr dar el gancho de la cinta a la antropometrista.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="pa6">
+                        <th scope="row">6</th>
+                        <td>Recoge la cinta de izquierda a derecha del evaluado de tal manera que la parte superior del borde de la cinta toque el cuarto punto sin ocultarlo (sin tapar el trazo) en ambos lados.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="pa7">
+                        <th scope="row">7</th>
+                        <td>Procede a ubicar la cinta métrica debajo del punto medio marcado, cerciorándose de que la línea quede enrazada al borde superior de la cinta métrica.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="pa8">
+                        <th scope="row">8</th>
+                        <td>Apoya sosteniendo la cinta métrica por detrás, sin hacer presión. La forma correcta es haciendo pinza abierta con los dedos (pulgar e índice) de cada lado del evaluado .	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="pa9">
+                        <th scope="row">9</th>
+                        <td>Registra adecuadamente el dato del perímetro abdominal.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="pa10">
+                        <th scope="row">10</th>
+                        <td>Retorna para recibir la cinta métrica y guardarla, el procedimiento es inverso a cuando se alcanzó la cinta para medir.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                </tbody>
+            </table>
+            
+            
+            <table class="table table-striped ">
+                <thead class="table-light table-dark">
+                    <tr >
+                    <th scope="col">C</th>
+                    <th colspan="3">Prueba de Yodo en la Sal y Cloro Residual en el Agua</th>
+                    </tr>  
+                    <tr>
+                    <th scope="col">a</th>
+                    <th scope="col">Prueba de Yodo en la sal	</th>                        
+                    <th scope="col">No Cumple</th>                        
+                    <th scope="col">Observación</th>
+                    </tr>
+                </thead>
+                <tbody data-bd="chyodoclo" class="tdobyprev">
+                    <tr data-id="0">
+                        <th scope="row"></th>
+                        <td colspan="2" class="align-middle">No Observó</td>
+                        <td colspan="1" class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault" data-oculto="check">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr data-id="ys1">
+                        <th scope="row">1</th>
+                        <td>Solicita adecuadamente el envase de la sal para cocinar.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <tr data-id="ys2">
+                        <th scope="row" >2</th>
+                        <td>Obtiene una cucharadita colmada de sal desde la parte intermedia del frasco.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="ys3">
+                        <th scope="row">3</th>
+                        <td>Agita el frasco blanco (reactivo) y añade solo una gota del reactivo a la muestra de sal.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="ys4">
+                        <th scope="row">4</th>
+                        <td>Compara la coloración con la escala de color adecuadamente.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="ys5">
+                        <th scope="row">5</th>
+                        <td>Registra oportunamente el resultado en la tablet (inmediatamente de leido el resultado).	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="ys6">
+                        <th scope="row">6</th>
+                        <td>Solicita la bolsa de la sal.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+            
+                </tbody>
+            
+                <thead class="table-light table-dark"> 
+                    <tr>
+                        <th scope="col">b</th>
+                        <th scope="col">Prueba de cloro residual en el agua	</th>                        
+                        <th scope="col">No Cumple</th>                        
+                        <th scope="col">Observación</th>
+                    </tr>
+                </thead>
+                <tbody data-bd="chyodoclo" class="tdobyprev">
+                    <tr data-id="0">
+                        <th scope="row"></th>
+                        <td colspan="2" class="align-middle">No Observó</td>
+                        <td colspan="1" class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault" data-oculto="check">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr data-id="pc1">
+                        <th scope="row">1</th>
+                        <td>Solicita ingresar a la vivienda para obtener la muestra de agua.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <tr data-id="pc2">
+                        <th scope="row" >2</th>
+                        <td>Abre el grifo completamente y deja correr el agua por unos 15 segundos.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="pc3">
+                        <th scope="row">3</th>
+                        <td>Enjuaga enérgicamente tres veces los dos tubos de plástico (uno por uno) con sus tapas con el agua que se va a muestrear.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="pc4">
+                        <th scope="row">4</th>
+                        <td>Toma la muestra sólo hasta la marca de 5 ml (primera marca inferior) en ambos tubos.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="pc5">
+                        <th scope="row">5</th>
+                        <td>Vierte totalmente el contenido de un sachet DPD para 5 ml de muestra en el segundo tubo. Agite para que se realice la mezcla.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-id="pc6">
+                        <th scope="row">6</th>
+                        <td>Agita adecuadamente el tubo para que se realice la mezcla.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="pc7">
+                        <th scope="row">7</th>
+                        <td>Realiza correctamente la lectura y registra inmediatamente el resultado en la tablet	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                    <tr data-id="pc8">
+                        <th scope="row">8</th>
+                        <td>Enjuaga enérgicamente tres veces los dos tubos de plástico (uno por uno) con sus tapas al finalizar la prueba.	</td>
+                        <td class="align-middle">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input switchclass" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </td>
+                        <td class="align-middle">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg>
+                            </button>
+                        </td>
+                    </tr> 
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Pregunta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <textarea id="observacion" rows="3" class="form-control observacion-textarea" placeholder="Escribe la observación aquí"></textarea>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="guardaredit">Guardar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../recursos/js/bootstrap.min.js" ></script>
+    <script>
+
+        // Obtener datos 
+        function obtenerDatosLogin() {
+            // Abrir la base de datos
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+
+            request.onsuccess = function(event) {
+                var db = event.target.result;
+
+                // Iniciar una transacción de lectura
+                var transaction = db.transaction(["usuariosbd"], "readonly");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore("usuariosbd");
+
+                // Obtener todos los objetos del almacén
+                var requestGetAll = objectStore.getAll();
+
+
+                requestGetAll.onsuccess = function(event) {
+                    var data = event.target.result;
+                    console.log("Datos obtenidos.usu...:", data);
+
+                    document.querySelector("#nomencu").textContent = data[0].nomencu
+                    document.querySelector("#nomeconglo").textContent = data[0].codconglo
+                    document.querySelector("#nomevivi").textContent = data[0].codvivi
+                    document.querySelector("#nomehog").textContent = data[0].codhog
+                    
+                };
+
+                requestGetAll.onerror = function(event) {
+                console.log("Error al obtener los datos");
+                };
+            };
+        }
+
+        obtenerDatosLogin()
+
+
+        function obtenerDatos(linkBase, booleano, regedit) {
+            // Abrir la base de datos
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+
+            request.onsuccess = function(event) {
+                var db = event.target.result;
+
+                // Iniciar una transacción de lectura
+                var transaction = db.transaction([linkBase], "readonly");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore(linkBase);
+
+                // Obtener todos los objetos del almacén
+                var requestGetAll = objectStore.getAll();
+
+
+                requestGetAll.onsuccess = function(event) {
+                    var data = event.target.result;
+                    console.log("Datos obtenidos....:", data);
+
+                    let checks = document.querySelectorAll(".switchclass")
+                    //console.log(checks)
+                    checks.forEach(el => {
+                        //console.log(el.closest("tbody").getAttribute("data-bd"))
+                        data.forEach(eli => {
+                            //console.log(eli.id)
+                            if(eli.id == el.closest("tr").getAttribute("data-id") && eli.noaplico == 1 && el.closest("tbody").getAttribute("data-bd") == linkBase ){
+                                el.checked = true
+                            }
+                        });
+                    });
+
+                    if(booleano){
+                        var data = event.target.result;
+                        //console.log("rrrrrr",busquedaid)
+                        let filtro = data.filter(el=> el.id == regedit) 
+
+                        let obs = document.querySelector("#observacion")
+                        obs.value = filtro[0].obs
+                        console.log("es el filtro",filtro)
+                    }
+
+                };
+
+                requestGetAll.onerror = function(event) {
+                console.log("Error al obtener los datos");
+                };
+            };
+        }
+
+        obtenerDatos("csmedipres", false, "")
+        obtenerDatos("chantrohemo", false, "")
+        obtenerDatos("chyodoclo", false, "")
+
+
+
+        // Añadir datos a la base de datos
+        function agregarDatosv2(preg, linkBase) {
+            // Abrir la base de datos
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+
+            request.onsuccess = function(event) {
+                var db = event.target.result;
+
+                // Iniciar una transacción de escritura
+                var transaction = db.transaction([linkBase], "readwrite");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore(linkBase);
+
+
+                var data = ''
+                var objeto = ''
+                //obtengo todos los valores
+                var requestGetAll = objectStore.getAll();
+                requestGetAll.onsuccess = function(event) {
+                    data = event.target.result;
+                    //console.log("Datos obtenidos desde agregar:", data.length);
+
+                    // Crear un objeto para almacenar en el almacén
+                    objeto = { id: preg , noaplico: 1
+                                        , obs: "" };
+
+                    // Añadir el objeto al almacén
+                    var requestAdd = objectStore.add(objeto);
+
+                    requestAdd.onsuccess = function(event) {
+                    console.log("Datos agregados correctamente");
+                    };
+
+                    requestAdd.onerror = function(event) {
+                    console.log("Error al agregar los datos");
+                    };
+                };
+            
+                
+            };
+        }
+
+        function limpiarEdit(){
+            document.querySelector("#observacion").value = ""  //busquedaid
+        }
+
+        function editarEstado(registro,estado,linkBase) {
+            // Open a connection to the IndexedDB database
+            const request = indexedDB.open('miBaseDeDatos2', 1);
+
+            request.onerror = function(event) {
+                console.error('Database error: ' + event.target.errorCode);
+            };
+
+            request.onsuccess = function(event) {
+                const db = event.target.result;
+
+                // Create a transaction to perform the update operation
+                const transaction = db.transaction([linkBase], 'readwrite');
+                const objectStore = transaction.objectStore(linkBase);
+
+                // Retrieve the record you want to update
+                const getRequest = objectStore.get(registro);
+
+                getRequest.onerror = function(event) {
+                    console.error('Error retrieving record: ' + event.target.errorCode);
+                };
+
+                getRequest.onsuccess = function(event) {
+                    const record = event.target.result;
+
+                    let textarea = document.querySelector("#observacion")
+                    console.log(record.obs, record.noaplico)
+
+                    let omi = estado
+
+                    record.noaplico = omi?1:0
+
+                    // Update the record in the object store
+                    const updateRequest = objectStore.put(record);
+
+                    updateRequest.onerror = function(event) {
+                    console.error('Error updating record: ' + event.target.errorCode);
+                    };
+
+                    updateRequest.onsuccess = function(event) {
+                    console.log('Record updated successfully');
+                    //limpiarEdit()
+                    };
+                };
+            };
+        }
+
+
+        function editarRegistro(registro,linkBase) {
+            // Open a connection to the IndexedDB database
+            const request = indexedDB.open('miBaseDeDatos2', 1);
+
+            request.onerror = function(event) {
+                console.error('Database error: ' + event.target.errorCode);
+            };
+
+            request.onsuccess = function(event) {
+                const db = event.target.result;
+
+                // Create a transaction to perform the update operation
+                const transaction = db.transaction([linkBase], 'readwrite');
+                const objectStore = transaction.objectStore(linkBase);
+
+                // Retrieve the record you want to update
+                const getRequest = objectStore.get(registro);
+
+                getRequest.onerror = function(event) {
+                    console.error('Error retrieving record: ' + event.target.errorCode);
+                };
+
+                getRequest.onsuccess = function(event) {
+                    const record = event.target.result;
+
+                    let textarea = document.querySelector("#observacion")
+                    
+                    record.obs = textarea.value
+                    // Update the record in the object store
+                    const updateRequest = objectStore.put(record);
+
+                    updateRequest.onerror = function(event) {
+                    console.error('Error updating record: ' + event.target.errorCode);
+                    };
+
+                    updateRequest.onsuccess = function(event) {
+                    console.log('Record updated successfully');
+                    //limpiarEdit()
+                    };
+                };
+            };
+        }
+
+        document.querySelector("#guardaredit").addEventListener('click', e=>{
+            let obs = document.querySelector("#observacion")
+            
+            let valor =  document.querySelector("#guardaredit").getAttribute("data-bd")
+            let preg = document.querySelector("#guardaredit").getAttribute("data-id")
+            editarRegistro(preg, valor)
+            
+        })
+
+
+
+        //funcion click pregunta
+
+        document.querySelector(".table-responsive").addEventListener("click", e=>{
+            //console.log(e.target.nodeName)
+            if(e.target.nodeName == 'INPUT'){
+                console.log(e.target.checked)
+                let valor =  e.target.closest(".tdobyprev").getAttribute("data-bd")
+                let preg = e.target.closest("tr").getAttribute("data-id")
+                //document.querySelector("#guardaredit").setAttribute("estado",e.target.checked)
+                agregarDatosv2(preg, valor)
+                editarEstado(preg,e.target.checked, valor)
+
+
+                if(e.target.getAttribute("data-oculto")== "check" && e.target.checked == true){
+                    console.log("es un check para deshabilitar")
+                    console.log("check",e.target.checked)
+                    console.log(e.target.closest("tr").parentElement)
+
+                    var tbody = e.target.closest("tr").parentElement;
+                    var filas = tbody.getElementsByTagName("tr");
+                    for (var i = 1; i < filas.length; i++) {
+                    filas[i].classList.add("tuClase");
+                    }
+
+                }else{
+                    console.log("es un check para habilitar")
+
+                    var tbody = e.target.closest("tr").parentElement;
+                    var filas = tbody.getElementsByTagName("tr");
+                    for (var i = 1; i < filas.length; i++) {
+                    filas[i].classList.remove("tuClase");
+                    }
+                }
+            }
+
+            if(e.target.nodeName == 'svg' || e.target.nodeName == 'path' || e.target.nodeName == 'BUTTON'  ){
+                limpiarEdit()
+                //console.log(e.target.closest("tr").firstElementChild.nextElementSibling.textContent)
+
+                document.querySelector("#modalTitle").textContent = e.target.closest("tr").firstElementChild.nextElementSibling.textContent
+
+                document.querySelector("#guardaredit").setAttribute("data-bd",e.target.closest(".tdobyprev").getAttribute("data-bd"))
+                document.querySelector("#guardaredit").setAttribute("data-id",e.target.closest("tr").getAttribute("data-id"))
+
+                obtenerDatos( e.target.closest(".tdobyprev").getAttribute("data-bd"), true ,e.target.closest("tr").getAttribute("data-id"))
+            }
+
+        })
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Tu código aquí
+            var tbody = document.querySelectorAll(".tdobyprev");
+
+            tbody.forEach(el => {
+                
+                var filas = el.getElementsByTagName("tr");
+
+                setTimeout(() => {
+                    console.log("redddd", filas[0].lastElementChild.firstElementChild.firstElementChild.checked)
+
+                    if(filas[0].lastElementChild.firstElementChild.firstElementChild.checked == true){
+                        for (var i = 1; i < filas.length; i++) {
+                            filas[i].classList.add("tuClase");
+                        }
+                    }else{
+
+                    }
+
+                }, 1000);
+
+                
+            });
+
+            //var filas = tbody[0].getElementsByTagName("tr");
+
+            
+        });
+
+    </script>
+</body>
+</html>

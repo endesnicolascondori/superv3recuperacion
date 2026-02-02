@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>observer imagenes</title>
+
+    <link href="../recursos/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            box-sizing: border-box;
+        }
+
+
+        #image-container {
+            height: 100vh;
+            overflow: auto;
+        }
+
+        .image img {
+            width: 150%;
+            /* object-fit: cover; */
+            /* width: 1200px;
+            height: 1200px; */
+            margin-top: 3.5rem;
+        }
+
+
+
+        .image {
+            height: 100%;
+            margin-bottom: 20px;
+            background-image: none !important;
+            background-color: white;
+            display: flex;
+        }
+
+
+
+
+        /* .image {
+            touch-action: manipulation;
+            margin-bottom: 20px;
+            background-color: lightgray;
+            margin: 1rem;
+            width: 100%;
+            overflow: scroll;
+            position: relative;
+            margin-bottom: 15px;
+        } */
+
+        /* *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } */
+        button.btn.rounded-circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            fill: white;
+            width: 40px;
+            height: 40px;
+        }
+
+        .caja {
+            position: relative;
+        }
+
+        div.posicionboton {
+            position: absolute;
+            /* transform: translate(0, -50%); */
+            right: 0.3rem;
+            top: 0.3rem;
+            /* opacity: 0.75; */
+        }
+
+        .caja {
+            display: grid;
+            grid-template-columns: 1fr 10fr;
+        }
+
+        .dev {
+            height: 100vh;
+            overflow-y: scroll;
+            width: 100%;
+        }
+
+
+        button.btn.btn-sm.btn-danger {
+            fill: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2px;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            margin-top: 0.3rem;
+        }
+
+        .input-group-text {
+            justify-content: space-between;
+            background-color: #bfbfbf;
+            /* border: 0;
+            border-radius: 0;
+            border-bottom: 1px solid white; */
+            grid-gap: 0.2rem;
+            padding: 0.375rem 0.4rem !important;
+            flex-direction: column;
+        }
+
+        /* .caj{
+            display: flex;
+        } */
+
+        .form-check-input {
+            width: 1.4em;
+            height: 1.4em;
+        }
+
+
+
+
+        /******/
+
+
+        .dropdown-toggle::before {
+            content: none !important;
+        }
+
+        /* .accordion-button {
+            padding: 0.4rem!important;
+        } */
+
+        .accordion-button::after {
+
+            transform: scale(0.6) !important;
+        }
+
+        .dropdown-menu {
+            min-width: 13rem !important;
+        }
+
+        .accordion-body {
+            padding: 0;
+        }
+
+        li.list-group-item {
+            font-size: 0.8rem;
+        }
+
+
+        button#dropdownMenuClickableInside {
+            display: flex;
+            background-color: #db69a2;
+            padding: 10px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            align-items: center;
+            justify-content: center;
+            border: none;
+        }
+
+
+
+        .accordion-button:not(.collapsed) {
+            color: #ffffff;
+            background-color: #db69a2;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .125);
+        }
+
+        .btn-danger {
+            color: #fff;
+            background-color: #db69a2;
+            border-color: #db69a2;
+        }
+
+        .btn-danger:hover {
+            color: #fff;
+            background-color: #db69a2;
+            border-color: #db69a2;
+        }
+
+        .form-check-input:checked {
+            background-color: #573b8a;
+            border-color: #573b8a;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #573b8a;
+            border-color: #573b8a;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #573b8a;
+            border-color: #573b8a;
+        }
+
+        .list-group-item {
+            padding: 0px;
+        }
+
+        .dropdown-item:focus,
+        .dropdown-item:hover {
+            color: #1e2125;
+            background-color: #dc35452b;
+        }
+
+        .accordion-button::after {
+            filter: invert(1);
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+        }
+
+        .col.flex {
+            display: flex;
+            flex-direction: column;
+            grid-gap: 0.4rem;
+        }
+
+
+
+        .form-check.espa {
+            display: flex;
+            grid-gap: 0.5rem;
+            align-items: center;
+        }
+
+
+        nav.navbar.navbar-light.bg-light {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            position: absolute;
+            width: 100%;
+        }
+
+        ol.breadcrumb {
+            align-items: center;
+            font-size: 0.8rem;
+            margin-bottom: 0px;
+        }
+
+
+        @media only screen and (max-width: 420px) {
+
+            /* .main {
+                width: 85%;
+            } */
+            ol.breadcrumb {
+                font-size: 0.5rem;
+            }
+
+            .navbar-brand {
+                margin-right: 0px !important;
+            }
+
+        }
+
+
+        #collapseExample .card-body {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-right: 0px;
+        }
+
+        #collapseExample .list-group-item {
+            border: none;
+        }
+
+        button#repor::after {
+            content: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="caja">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../recursos/endes.png" alt="" width="30" height="30">
+                </a>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" id="nomencu">SANDY GABRIELA ALVA CACHIQUE</li>
+                        <li class="breadcrumb-item" id="nomeconglo">4268</li>
+                        <li class="breadcrumb-item" id="nomevivi">001</li>
+                        <li class="breadcrumb-item" id="nomehog">01</li>
+                        </span>
+                        </button></li>
+                    </ol>
+                </nav>
+                <div class="btn-group dropstart">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableInside"
+                        onclick="" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                            viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <style>
+                                svg {
+                                    fill: #ffffff
+                                }
+                            </style>
+                            <path
+                                d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z">
+                            </path>
+                        </svg>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside" style="">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="true"
+                                        aria-controls="flush-collapseOne">
+                                        Secciones del Hogar
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample" style="">
+                                    <div class="accordion-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><a class="dropdown-item" href="chcaracmihog">1.
+                                                    Carac Miembros del Hogar</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item"
+                                                    href="chmortalidad">1.2. Mortalidad</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="chcaracvivi">2.
+                                                    Carac. de la vivienda</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="chprosocia">3.
+                                                    Programas Sociales</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                        Secciones Individual
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><a class="dropdown-item" href="cianteced">1.
+                                                    Antec. Entrevistada</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="cireproduc">2.
+                                                    Reproducción</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="cihistoria">2.
+                                                    Hist. Nacimiento</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="ci226240">2.1.
+                                                    226 - 240</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="cianticoncep">3.
+                                                    Anticoncepción</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="ciseccion4a">4A.
+                                                    Embarazo p. Lacta.</a></li>
+                                            <li class="list-group-item" data-bs-toggle="collapse"
+                                                href="#collapseExample" role="button" aria-expanded="false"
+                                                aria-controls="collapseExample"><a class="dropdown-item" href="#">4B.
+                                                    Sección 4B</a></li>
+                                            <div class="collapse" id="collapseExample">
+                                                <div class="card card-body">
+                                                    <li class="list-group-item"><a class="dropdown-item"
+                                                            href="ciinmunizaci">4B. Inmuniza. Salud</a></li>
+                                                    <li class="list-group-item" data-bs-toggle="collapse"
+                                                        href="#collapseExample2" role="button" aria-expanded="false"
+                                                        aria-controls="collapseExample2"><a class="dropdown-item"
+                                                            href="#">Tramos</a></li>
+                                                    <div class="collapse" id="collapseExample2">
+                                                        <div class="card card-body">
+                                                            <li class="list-group-item"><a class="dropdown-item"
+                                                                    href="citramo1">Tramo1 </a></li>
+                                                            <li class="list-group-item"><a class="dropdown-item"
+                                                                    href="citramo2">Tramo2 </a></li>
+                                                            <li class="list-group-item"><a class="dropdown-item"
+                                                                    href="citramo3">Tramo3 </a></li>
+                                                            <li class="list-group-item"><a class="dropdown-item"
+                                                                    href="citramo4">Tramo4 </a></li>
+                                                            <li class="list-group-item"><a class="dropdown-item"
+                                                                    href="citramo5">Tramo5 </a></li>
+                                                            <li class="list-group-item"><a class="dropdown-item"
+                                                                    href="citramo6">Tramo6 </a></li>
+                                                            <li class="list-group-item"><a class="dropdown-item"
+                                                                    href="citramo6a">Tramo6a </a></li>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <li class="list-group-item"><a class="dropdown-item" href="ci479496">4B.1.
+                                                    Seciones D. y Anemia</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="cinupciali">5.
+                                                    Nupcialidad</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="ciprefecund">6.
+                                                    Pref. Fecundidad</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="citrabajo">7.
+                                                    Ant. Cónyu. y traba. mujer</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="cisida">8. Sida y
+                                                    otras I.T.S</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="cimormater">9.
+                                                    Mortal. Materna</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="civiolen">10.
+                                                    Violencia Doméstica</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="cicarne">Carné de Atención</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                        aria-controls="flush-collapseThree">
+                                        Secciones de Salud
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><a class="dropdown-item" href="csanteced">0.
+                                                    Antecedentes</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="cshiperdi">1.
+                                                    Hipertensión y diabetes</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="csfactore">2.
+                                                    Factores de Riesgo</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="csocularbu">3. S.
+                                                    Ocular y Bucal Adultos</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="cscancer">4. P. y
+                                                    control Cancer</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="cstbcds">5.
+                                                    Tuberculosis</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="csvihsida">6.
+                                                    VIH/SIDA</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="csmental">7.
+                                                    Salud Mental</a></li>
+                                            <li class="list-group-item"><a class="dropdown-item" href="csninos">8. S.
+                                                    Ocular y Bucal Niños</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button " type="button" data-button="antro" id="repor">
+                                        Pruebas y Mediciones
+                                    </button>
+                                </h2>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button " type="button" data-button="reportes" id="repor">
+                                        Reportes
+                                    </button>
+                                </h2>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="dev" data-asignacion="chcaracmihog">
+            <div class="input-group-text" data-preg="PH">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">PH</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="H">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">H</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="EH">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">EH</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="1">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">1</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="2">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">2</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="3">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">3</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="1VER">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">1VER</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="2VER">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">2VER</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="3VER">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">3VER</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="4">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">4</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="5">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">5</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="6">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">6</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="7">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">7</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="7A">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">7A</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="8">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">8</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="input-group-text" data-preg="11">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">11</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="12">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">12</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="13">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">13</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="14">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">14</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="15">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">15</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="16">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">16</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="17">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">17</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="18">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">18</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="19">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">19</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="20">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">20</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="21">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">21</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="21A">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">21A</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="22">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">22</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="23">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">23</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="24">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">24</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="25">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">25</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="25A">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">25A</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="25B">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">25B</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="25C">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">25C</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="25D">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">25D</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-group-text" data-preg="25E">
+                <input class="form-check-input checkvalue mt-0" type="checkbox" value=""
+                    aria-label="Checkbox for following text input">
+                <span class="numid">25E</span>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModaledit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="image-container">
+            <div class="image" data-src="../img/chcaracmihog/1.webp"></div>
+            <div class="image" data-src="../img/chcaracmihog/2.webp"></div>
+            <div class="image" data-src="../img/chcaracmihog/3.webp"></div>
+            <div class="image" data-src="../img/chcaracmihog/4.webp"></div>
+            <!-- <div class="image" data-src="../img/chcaracmihog/5.webp"></div> -->
+            <div class="image" data-src="../img/chcaracmihog/6.webp"></div>
+            <div class="image" data-src="../img/chcaracmihog/7.webp"></div>
+            <!-- <div class="image" data-src="../img/chcaracmihog/6.webp"></div> -->
+        </div>
+
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear Observación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="omi">
+                                <label class="form-check-label" for="omi">
+                                    Omitió fraseo de pregunta
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="fraseo">
+                                <label class="form-check-label" for="fraseo">
+                                    fraseo incorrecto
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="registroi">
+                                <label class="form-check-label" for="registroi">
+                                    registro incorrecto
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="errorc">
+                                <label class="form-check-label" for="errorc">
+                                    error de concepto
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="sondeoi">
+                                <label class="form-check-label" for="sondeoi">
+                                    sondeo incorrecto
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="inducer">
+                                <label class="form-check-label" for="inducer">
+                                    induce a la respuesta
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="nrcons">
+                                <label class="form-check-label" for="nrcons">
+                                    no realiza consistencia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="consistenciai">
+                                <label class="form-check-label" for="consistenciai">
+                                    consistencia incorrecta
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="asumresp">
+                                <label class="form-check-label" for="asumresp">
+                                    Asume Respuesta
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Observación</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="guardar">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal EDITAR -->
+    <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar pregunta N° <span id="numpregunta"></span>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- <div class="input-group">
+                    <input type="text" placeholder="Ingresa búsqueda" aria-label="First name" class="form-control" id="busquedaid">
+                    <button id="verListado" class="form-control btn btn-primary">Ver Listado</button>
+                </div> -->
+
+                    <div class="row mt-4">
+                        <div class="col flex">
+                            <div class="form-check espa">
+                                <input class="form-check-input" type="checkbox" id="omiedit">
+                                <label class="form-check-label" for="omiedit">
+                                    Omitió fraseo de pregunta
+                                </label>
+                            </div>
+                            <div class="form-check espa">
+                                <input class="form-check-input" type="checkbox" id="fraseoedit">
+                                <label class="form-check-label" for="fraseoedit">
+                                    Fraseo incorrecto
+                                </label>
+                            </div>
+                            <div class="form-check espa">
+                                <input class="form-check-input" type="checkbox" id="registroiedit">
+                                <label class="form-check-label" for="registroiedit">
+                                    Registro incorrecto
+                                </label>
+                            </div>
+                            <div class="form-check espa">
+                                <input class="form-check-input" type="checkbox" id="errorcedit">
+                                <label class="form-check-label" for="errorcedit">
+                                    Error de concepto
+                                </label>
+                            </div>
+                            <div class="form-check espa">
+                                <input class="form-check-input" type="checkbox" id="sondeoiedit">
+                                <label class="form-check-label" for="sondeoiedit">
+                                    Sondeo incorrecto
+                                </label>
+                            </div>
+                            <div class="form-check espa">
+                                <input class="form-check-input" type="checkbox" id="induceredit">
+                                <label class="form-check-label" for="induceredit">
+                                    Induce a la respuesta
+                                </label>
+                            </div>
+                            <div class="form-check espa">
+                                <input class="form-check-input" type="checkbox" id="nrconsedit">
+                                <label class="form-check-label" for="nrconsedit">
+                                    No realiza consistencia
+                                </label>
+                            </div>
+                            <div class="form-check espa">
+                                <input class="form-check-input" type="checkbox" id="consistenciaiedit">
+                                <label class="form-check-label" for="consistenciaiedit">
+                                    Consistencia incorrecta
+                                </label>
+                            </div>
+                            <div class="form-check espa">
+                                <input class="form-check-input" type="checkbox" id="asumrespedit">
+                                <label class="form-check-label" for="asumrespedit">
+                                    Asume Respuesta
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Observación</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1edit" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        id="guardaredit">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../recursos/js/bootstrap.min.js"></script>
+    <script>
+        // const images = document.querySelectorAll('.image');
+
+        // const options = {
+        // root: document.querySelector('#image-container'),
+        // rootMargin: '0px',
+        // threshold: 0.5
+        // };
+
+        // const handleIntersection = (entries, observer) => {
+        //     console.log("hii")
+        //     entries.forEach(entry => {
+        //         if (entry.intersectionRatio > 0) {
+        //         // Crear elemento de imagen
+        //         const imgElement = document.createElement('img');
+
+        //         // Establecer atributo srcset con la imagen WebP
+        //         imgElement.srcset = entry.target.dataset.src;
+
+        //         // Cargar la imagen
+        //         imgElement.onload = () => {
+        //             entry.target.style.backgroundImage = `url(${entry.target.dataset.src})`;
+        //             observer.unobserve(entry.target);
+        //         };
+
+        //         // Agregar elemento de imagen al contenedor
+        //         entry.target.appendChild(imgElement);
+        //         }
+        //     });
+        // };
+
+        // const observer = new IntersectionObserver(handleIntersection, options);
+
+        // images.forEach(image => {
+        // observer.observe(image);
+        // });
+
+
+    </script>
+
+    <script>
+
+        function observerr() {
+            const images = document.querySelectorAll('.image');
+
+            const options = {
+                root: document.querySelector('#image-container'),
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+
+            const handleIntersection = (entries, observer) => {
+                console.log("hii")
+                entries.forEach(entry => {
+                    if (entry.intersectionRatio > 0) {
+                        // Crear elemento de imagen
+                        const imgElement = document.createElement('img');
+
+                        // Establecer atributo srcset con la imagen WebP
+                        imgElement.srcset = entry.target.dataset.src;
+
+                        // Cargar la imagen
+                        imgElement.onload = () => {
+                            entry.target.style.backgroundImage = `url(${entry.target.dataset.src})`;
+                            observer.unobserve(entry.target);
+                        };
+
+                        // Agregar elemento de imagen al contenedor
+                        entry.target.appendChild(imgElement);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(handleIntersection, options);
+
+            images.forEach(image => {
+                observer.observe(image);
+            });
+        }
+
+        observerr()
+
+
+        // Abrir la base de datos (o crearla si no existe)
+        var request = indexedDB.open("miBaseDeDatos2", 1);
+
+        // Manejador para el evento de éxito
+        request.onsuccess = function (event) {
+            var db = event.target.result;
+            console.log("Base de datos abierta correctamente");
+
+            // Hacer algo con la base de datos...
+        };
+
+        // Manejador para el evento de error
+        request.onerror = function (event) {
+            console.log("Error al abrir la base de datos");
+        };
+
+        // Manejador para el evento de actualización (se ejecuta cuando se cambia la versión de la base de datos)
+        request.onupgradeneeded = function (event) {
+            var db = event.target.result;
+
+            // Crear un almacén de objetos (equivalente a una tabla en una base de datos relacional)
+            var objectStore = db.createObjectStore("chcaracmihog", { keyPath: "id" });
+
+            // Crear un índice para buscar por nombre
+            //objectStore.createIndex("nombre", "nombre", { unique: false });
+
+            console.log("Base de datos actualizada");
+        };
+
+
+
+        // Añadir datos a la base de datos
+        function agregarDatosv2(preg, linkBase = 'chcaracmihog') {
+            // Abrir la base de datos
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+
+            request.onsuccess = function (event) {
+                var db = event.target.result;
+
+                // Iniciar una transacción de escritura
+                var transaction = db.transaction([linkBase], "readwrite");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore(linkBase);
+
+
+                var data = ''
+                var objeto = ''
+                //obtengo todos los valores
+                var requestGetAll = objectStore.getAll();
+                requestGetAll.onsuccess = function (event) {
+                    data = event.target.result;
+                    //console.log("Datos obtenidos desde agregar:", data.length);
+
+                    // Crear un objeto para almacenar en el almacén
+                    objeto = {
+                        id: preg, omit: 0
+                        , fraseo: 0
+                        , registroi: 0
+                        , errorc: 0
+                        , sondeoi: 0
+                        , inducer: 0
+                        , nrcons: 0
+                        , consistenciai: 0
+                        , asumresp: 0
+                        , obs: ""
+                    };
+
+                    // Añadir el objeto al almacén
+                    var requestAdd = objectStore.add(objeto);
+
+                    requestAdd.onsuccess = function (event) {
+                        console.log("Datos agregados correctamente");
+                    };
+
+                    requestAdd.onerror = function (event) {
+                        console.log("Error al agregar los datos");
+                    };
+                };
+
+
+            };
+        }
+
+        // Obtener datos de la base de datos
+        function obtenerDatos(linkBase = 'chcaracmihog') {
+            // Abrir la base de datos
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+
+            request.onsuccess = function (event) {
+                var db = event.target.result;
+
+                // Iniciar una transacción de lectura
+                var transaction = db.transaction([linkBase], "readonly");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore(linkBase);
+
+                // Obtener todos los objetos del almacén
+                var requestGetAll = objectStore.getAll();
+
+
+                requestGetAll.onsuccess = function (event) {
+                    var data = event.target.result;
+                    console.log("Datos obtenidos....:", data);
+
+                    let checks = document.querySelectorAll(".checkvalue")
+                    checks.forEach(el => {
+                        //console.log(el.closest(".input-group-text").getAttribute("data-preg"))
+
+                        data.forEach(eli => {
+                            if (eli.id == el.closest(".input-group-text").getAttribute("data-preg")) {
+                                el.checked = true
+                            }
+                        });
+                    });
+
+                };
+
+                requestGetAll.onerror = function (event) {
+                    console.log("Error al obtener los datos");
+                };
+            };
+        }
+
+        obtenerDatos()
+
+
+
+        // Obtener datos 
+        function obtenerDatosLogin() {
+            // Abrir la base de datos
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+
+            request.onsuccess = function (event) {
+                var db = event.target.result;
+
+                // Iniciar una transacción de lectura
+                var transaction = db.transaction(["usuariosbd"], "readonly");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore("usuariosbd");
+
+                // Obtener todos los objetos del almacén
+                var requestGetAll = objectStore.getAll();
+
+
+                requestGetAll.onsuccess = function (event) {
+                    var data = event.target.result;
+                    console.log("Datos obtenidos.usu...:", data);
+
+                    document.querySelector("#nomencu").textContent = data[0].nomencu
+                    document.querySelector("#nomeconglo").textContent = data[0].codconglo
+                    document.querySelector("#nomevivi").textContent = data[0].codvivi
+                    document.querySelector("#nomehog").textContent = data[0].codhog
+
+                    console.log("verifica usu", data[0].cargoencu);
+                    data[0].cargoencu == 25 ? window.location.href = "antrop.html" : ""
+                };
+
+                requestGetAll.onerror = function (event) {
+                    console.log("Error al obtener los datos");
+                };
+            };
+        }
+
+        obtenerDatosLogin()
+
+
+        // Obtener datos de la base de datos
+        function obtenerUnRegistro(regedit, linkBase = 'chcaracmihog') {
+            // Abrir la base de datos
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+
+            request.onsuccess = function (event) {
+                var db = event.target.result;
+
+                // Iniciar una transacción de lectura
+                var transaction = db.transaction([linkBase], "readonly");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore(linkBase);
+
+                // Obtener todos los objetos del almacén
+                var requestGetAll = objectStore.getAll();
+
+
+                requestGetAll.onsuccess = function (event) {
+                    var data = event.target.result;
+                    let busquedaid = document.querySelector("#numpregunta")
+                    //console.log("rrrrrr",busquedaid)
+                    let filtro = data.filter(el => el.id == busquedaid?.textContent)
+
+                    if (filtro.length == 1) {
+
+                        let obs = document.querySelector("#exampleFormControlTextarea1edit")
+                        let omi = document.querySelector("#omiedit")
+                        let fraseo = document.querySelector("#fraseoedit")
+                        let registroi = document.querySelector("#registroiedit")
+                        let errorc = document.querySelector("#errorcedit")
+                        let sondeoi = document.querySelector("#sondeoiedit")
+                        let inducer = document.querySelector("#induceredit")
+                        let nrcons = document.querySelector("#nrconsedit")
+                        let consistenciai = document.querySelector("#consistenciaiedit")
+                        let asumresp = document.querySelector("#asumrespedit")
+
+                        document.querySelector("#guardaredit").setAttribute("data-guarda", busquedaid.textContent)
+
+                        filtro[0].consistenciai == 0 ? consistenciai.checked = false : consistenciai.checked = true
+                        filtro[0].asumresp == 0 ? asumresp.checked = false : asumresp.checked = true
+                        filtro[0].nrcons == 0 ? nrcons.checked = false : nrcons.checked = true
+                        filtro[0].inducer == 0 ? inducer.checked = false : inducer.checked = true
+                        filtro[0].sondeoi == 0 ? sondeoi.checked = false : sondeoi.checked = true
+                        filtro[0].errorc == 0 ? errorc.checked = false : errorc.checked = true
+                        filtro[0].registroi == 0 ? registroi.checked = false : registroi.checked = true
+                        filtro[0].fraseo == 0 ? fraseo.checked = false : fraseo.checked = true
+                        filtro[0].omit == 0 ? omi.checked = false : omi.checked = true
+                        //obs.setAttribute("value", filtro[0].obs) 
+                        obs.value = filtro[0].obs
+
+
+                        console.log("Datos obtenidos:", filtro);
+                    } else {
+                        console.log("el valor no existe....")
+                        limpiarEdit()
+                    }
+
+                };
+
+                requestGetAll.onerror = function (event) {
+                    console.log("Error al obtener los datos");
+                };
+            };
+        }
+
+
+
+
+        function editarRegistro(registro, linkBase = 'chcaracmihog') {
+            // Open a connection to the IndexedDB database
+            const request = indexedDB.open('miBaseDeDatos2', 1);
+
+            request.onerror = function (event) {
+                console.error('Database error: ' + event.target.errorCode);
+            };
+
+            request.onsuccess = function (event) {
+                const db = event.target.result;
+
+                // Create a transaction to perform the update operation
+                const transaction = db.transaction([linkBase], 'readwrite');
+                const objectStore = transaction.objectStore(linkBase);
+
+                // Retrieve the record you want to update
+                const getRequest = objectStore.get(registro);
+
+                getRequest.onerror = function (event) {
+                    console.error('Error retrieving record: ' + event.target.errorCode);
+                };
+
+                getRequest.onsuccess = function (event) {
+                    const record = event.target.result;
+
+
+                    let obs = document.querySelector("#exampleFormControlTextarea1edit")
+                    let omi = document.querySelector("#omiedit")
+                    let fraseo = document.querySelector("#fraseoedit")
+                    let registroi = document.querySelector("#registroiedit")
+                    let errorc = document.querySelector("#errorcedit")
+                    let sondeoi = document.querySelector("#sondeoiedit")
+                    let inducer = document.querySelector("#induceredit")
+                    let nrcons = document.querySelector("#nrconsedit")
+                    let consistenciai = document.querySelector("#consistenciaiedit")
+                    let asumresp = document.querySelector("#asumrespedit")
+
+                    // Modify the necessary properties of the retrieved record
+
+                    record.obs = obs.value
+                    record.omit = omi.checked ? 1 : 0
+                    record.fraseo = fraseo.checked ? 1 : 0
+                    record.registroi = registroi.checked ? 1 : 0
+                    record.errorc = errorc.checked ? 1 : 0
+                    record.sondeoi = sondeoi.checked ? 1 : 0
+                    record.inducer = inducer.checked ? 1 : 0
+                    record.nrcons = nrcons.checked ? 1 : 0
+                    record.consistenciai = consistenciai.checked ? 1 : 0
+                    record.asumresp = asumresp.checked ? 1 : 0
+
+                    // Update the record in the object store
+                    const updateRequest = objectStore.put(record);
+
+                    updateRequest.onerror = function (event) {
+                        console.error('Error updating record: ' + event.target.errorCode);
+                    };
+
+                    updateRequest.onsuccess = function (event) {
+                        console.log('Record updated successfully');
+                    };
+                };
+            };
+        }
+        // agregarDatos()
+        //obtenerDatos()
+
+        function limpiar() {
+            document.querySelector("#exampleFormControlTextarea1").value = ""
+            document.querySelector("#omi").checked = false
+            document.querySelector("#fraseo").checked = false
+            document.querySelector("#registroi").checked = false
+            document.querySelector("#errorc").checked = false
+            document.querySelector("#sondeoi").checked = false
+            document.querySelector("#inducer").checked = false
+            document.querySelector("#nrcons").checked = false
+            document.querySelector("#consistenciai").checked = false
+            document.querySelector("#asumresp").checked = false
+        }
+
+        function limpiarEdit() {
+            document.querySelector("#exampleFormControlTextarea1edit").value = ""  //busquedaid
+            //document.querySelector("#busquedaid").value = ""
+            document.querySelector("#omiedit").checked = false
+            document.querySelector("#fraseoedit").checked = false
+            document.querySelector("#registroiedit").checked = false
+            document.querySelector("#errorcedit").checked = false
+            document.querySelector("#sondeoiedit").checked = false
+            document.querySelector("#induceredit").checked = false
+            document.querySelector("#nrconsedit").checked = false
+            document.querySelector("#consistenciaiedit").checked = false
+            document.querySelector("#asumrespedit").checked = false
+        }
+
+
+        // document.querySelector("#ver").addEventListener('click', e=>{
+        //     limpiar()
+        // })
+
+
+
+        document.querySelector("#guardar").addEventListener('click', e => {
+            let obs = document.querySelector("#exampleFormControlTextarea1")
+            let omi = document.querySelector("#omi")
+            let fraseo = document.querySelector("#fraseo")
+            let registroi = document.querySelector("#registroi")
+            let errorc = document.querySelector("#errorc")
+            let sondeoi = document.querySelector("#sondeoi")
+            let inducer = document.querySelector("#inducer")
+            let nrcons = document.querySelector("#nrcons")
+            let consistenciai = document.querySelector("#consistenciai")
+            let asumresp = document.querySelector("#asumresp")
+
+            console.log(omi.checked)
+            // let ape = document.querySelector("#ape")
+            // let eda = document.querySelector("#eda")
+
+            //console.log(nom.value, ape.value, eda.value)
+            if (omi.checked == false &&
+                fraseo.checked == false &&
+                registroi.checked == false &&
+                errorc.checked == false &&
+                sondeoi.checked == false &&
+                inducer.checked == false &&
+                nrcons.checked == false &&
+                consistenciai.checked == false && asumresp.checked == false && obs.value == "") {
+                console.log("todo vacio")
+            } else {
+
+
+                agregarDatos(omi.checked ? 1 : 0, fraseo.checked ? 1 : 0, registroi.checked ? 1 : 0, errorc.checked ? 1 : 0, sondeoi.checked ? 1 : 0, inducer.checked ? 1 : 0, nrcons.checked ? 1 : 0, consistenciai.checked ? 1 : 0, asumresp.checked ? 1 : 0, obs.value)
+                limpiar()
+            }
+
+
+        })
+
+        // document.querySelector("#verListado").addEventListener('click', e=>{
+        //     //obtenerDatos()
+        //     //editarRegistro(4)
+        //     obtenerUnRegistro()
+        // })
+
+
+        document.querySelector("#guardaredit").addEventListener('click', e => {
+            let obs = document.querySelector("#exampleFormControlTextarea1edit")
+            let omi = document.querySelector("#omiedit")
+            let fraseo = document.querySelector("#fraseoedit")
+            let registroi = document.querySelector("#registroiedit")
+            let errorc = document.querySelector("#errorcedit")
+            let sondeoi = document.querySelector("#sondeoiedit")
+            let inducer = document.querySelector("#induceredit")
+            let nrcons = document.querySelector("#nrconsedit")
+            let consistenciai = document.querySelector("#consistenciaiedit")
+            let asumresp = document.querySelector("#asumrespedit")
+
+            //console.log(omi.checked)
+            // let ape = document.querySelector("#ape")
+            // let eda = document.querySelector("#eda")
+
+            //console.log(nom.value, ape.value, eda.value)
+            let valorAEditar = document.querySelector("#numpregunta").textContent
+            //console.log(document.querySelector("#guardaredit").getAttribute("data-guarda"))
+            let valor = document.querySelector(".dev")
+            editarRegistro(valorAEditar, valor.getAttribute("data-asignacion"))
+            //limpiarEdit()
+            //agregarDatos( omi.checked?1:0,fraseo.checked?1:0,registroi.checked?1:0,errorc.checked?1:0,sondeoi.checked?1:0,inducer.checked?1:0,nrcons.checked?1:0,consistenciai.checked?1:0, obs.value)
+        })
+
+
+
+        //funcion click pregunta
+
+        document.querySelector(".dev").addEventListener("click", e => {
+            //console.log(e.target.nodeName)
+            if (e.target.nodeName == 'INPUT') {
+                console.log(e.target.closest(".input-group-text").getAttribute("data-preg"))
+                let valor = document.querySelector(".dev")
+                agregarDatosv2(e.target.closest(".input-group-text").getAttribute("data-preg"), valor.getAttribute("data-asignacion"))
+            }
+
+            if (e.target.nodeName == 'svg' || e.target.nodeName == 'path' || e.target.nodeName == 'BUTTON') {
+                console.log(e.target.closest(".input-group-text").getAttribute("data-preg"))
+                // agregarDatosv2(+e.target.closest(".input-group-text").getAttribute("data-preg"))
+                document.querySelector("#numpregunta").textContent = e.target.closest(".input-group-text").getAttribute("data-preg")
+
+                let valor = document.querySelector(".dev")
+                obtenerUnRegistro(e.target.closest(".input-group-text").getAttribute("data-preg"), valor.getAttribute("data-asignacion"))
+                //editarRegistro(+e.target.closest(".input-group-text").getAttribute("data-preg"))
+            }
+
+
+        })
+
+
+
+
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     let checks = document.querySelectorAll(".checkvalue")
+        //     obtenerDatos()
+        //     checks.forEach(el => {
+        //         console.log(el.getAttribute("aria-label"))
+        //     });
+        //     console.log(checks)
+        // });
+
+
+
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     let listalinks = document.querySelectorAll(".dropdown-item")
+        //     console.log(listalinks)
+        //     fetchData();
+        // });
+
+        function scrollToTop() {
+            const container = document.getElementById('image-container');
+            container.scrollTop = 0;
+        }
+
+        document.querySelector("#accordionFlushExample").addEventListener("click", e => {
+
+
+
+            if (e.target.nodeName == "A") {
+                scrollToTop()
+                e.preventDefault()
+
+                //console.log("estas en un enlace", e.target.getAttribute("href"))
+                let dataAsigancion = document.querySelector(".dev")
+                dataAsigancion.setAttribute("data-asignacion", e.target.getAttribute("href"))
+
+                fetchData(e.target.getAttribute("href"))
+            } else if (e.target.nodeName == "BUTTON" && e.target.getAttribute("data-button") == "reportes") {
+
+                window.location.href = "reportes.html";
+            } else if (e.target.nodeName == "BUTTON" && e.target.getAttribute("data-button") == "antro") {
+
+                window.location.href = "index6.html";
+            }
+
+        })
+
+
+        async function fetchData(pagina) {
+            try {
+                const response = await fetch('../html/preguntas.json');
+                if (!response.ok) {
+                    throw new Error('Request failed');
+                }
+                const data = await response.json();
+                console.log(data, pagina);
+
+
+
+                let filtro = data[pagina]
+                console.log("gato", filtro.preguntas)
+
+                let cajaPreguntas = document.querySelector(".dev")
+                cajaPreguntas.innerHTML = ""
+
+                filtro.preguntas.preg.forEach(el => {
+                    //console.log(el)
+                    cajaPreguntas.insertAdjacentHTML('beforeend', `<div class="input-group-text" data-preg="${el}">
+                    <input class="form-check-input checkvalue mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    <span class="numid">${el}</span>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"  data-bs-target="#exampleModaledit">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                    </button>
+                    </div>`);
+                });
+
+                let cajaImg = document.querySelector("#image-container")
+                cajaImg.innerHTML = ""
+
+                let valor = document.querySelector(".dev")
+
+                filtro.preguntas.img.forEach(el => {
+                    //console.log(el)
+                    cajaImg.insertAdjacentHTML('beforeend', `<div class="image" data-src="../img/${valor.getAttribute("data-asignacion")}/${el}.webp"></div>`);
+                });
+
+
+
+                observerr()
+                obtenerDatos(valor.getAttribute("data-asignacion"))
+
+
+                var boton = document.getElementById('dropdownMenuClickableInside');
+                boton.click();
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

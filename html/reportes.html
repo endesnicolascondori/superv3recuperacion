@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>observer imagenes</title>
+
+    <link href="../recursos/css/bootstrap.min.css" rel="stylesheet" >
+
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            box-sizing: border-box;
+        }
+
+
+        #image-container {
+          height: 100vh;
+          overflow: auto;
+        }
+    
+        .image img {
+            width: 100%;
+            /* object-fit: cover; */
+        }
+
+        .image {
+          height: 100%; 
+          margin-bottom: 20px;
+          background-color: lightgray;
+          /* background-image: none!important; */
+          display: flex;  
+        }
+
+
+        /* *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } */
+        button.btn.rounded-circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            fill: white;
+            width: 40px;
+            height: 40px;
+        }
+
+        .caja {
+            position: relative;
+        }
+
+        div.posicionboton {
+            position: absolute;
+            /* transform: translate(0, -50%); */
+            right: 0.3rem;
+            top: 0.3rem;
+            /* opacity: 0.75; */
+        }
+        .caja {
+            display: grid;
+            grid-template-columns: 1fr 10fr;
+        }
+
+        .dev {
+            height: 100vh;
+            overflow-y: scroll;
+            width: 100%;
+        }
+
+
+        button.btn.btn-sm.btn-danger {
+            fill: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2px;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            margin-top: 0.3rem;
+        }
+        .input-group-text {
+            justify-content: space-between;
+            background-color: #bfbfbf;
+            /* border: 0;
+            border-radius: 0;
+            border-bottom: 1px solid white; */
+            grid-gap: 0.2rem;
+            padding: 0.375rem 0.4rem!important;
+            flex-direction: column;
+        }
+        /* .caj{
+            display: flex;
+        } */
+
+        .form-check-input {
+            width: 1.4em;
+            height: 1.4em;
+        }
+
+
+
+
+        /******/
+
+
+        .dropdown-toggle::before{
+            content: none!important;
+        }
+
+        /* .accordion-button {
+            padding: 0.4rem!important;
+        } */
+
+        .accordion-button::after {
+
+            transform: scale(0.6)!important;
+        }
+
+        .dropdown-menu {
+            min-width: 13rem!important;
+        }
+
+        .accordion-body {
+            padding: 0;
+        }
+        li.list-group-item {
+            font-size: 0.8rem;
+        }
+
+
+        button#dropdownMenuClickableInside {
+            display: flex;
+            background-color: #db69a2;
+            padding: 10px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            align-items: center;
+            justify-content: center;
+            border: none;
+        }
+
+
+
+        .accordion-button:not(.collapsed) {
+            color: #ffffff;
+            background-color: #db69a2;
+            box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+        }
+
+        .btn-danger {
+            color: #fff;
+            background-color: #db69a2;
+            border-color: #db69a2;
+        }
+
+        .btn-danger:hover {
+            color: #fff;
+            background-color: #db69a2;
+            border-color: #db69a2;
+        }
+
+        .form-check-input:checked {
+            background-color: #573b8a;
+            border-color: #573b8a;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #573b8a;
+            border-color: #573b8a;
+        }
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #573b8a;
+            border-color: #573b8a;
+        }
+
+        .list-group-item {
+            padding:0px;
+        }
+
+        .dropdown-item:focus, .dropdown-item:hover {
+            color: #1e2125;
+            background-color: #dc35452b;
+        }
+
+        .accordion-button::after {
+            filter: invert(1);
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+        }
+
+        .col.flex {
+            display: flex;
+            flex-direction: column;
+            grid-gap: 0.4rem;
+        }
+
+
+
+        .form-check.espa {
+            display: flex;
+            grid-gap: 0.5rem;
+            align-items: center;
+        }
+
+
+        nav.navbar.navbar-light.bg-light {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            position: absolute;
+            width: 100%;
+        }
+        ol.breadcrumb {
+            align-items: center;
+            font-size: 0.8rem;
+            margin-bottom: 0px;
+        }
+
+
+        @media only screen and (max-width: 420px) {
+            /* .main {
+                width: 85%;
+            } */
+            ol.breadcrumb {
+                font-size: 0.5rem;
+            }
+            .navbar-brand {
+                margin-right: 0px!important;
+            }
+ 
+        }
+
+        th, td {
+            text-align: center;
+        }
+
+        thead {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="caja">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+              <a class="navbar-brand" href="index5.html">
+                <!-- <img src="https://aplications.inei.gob.pe/WebEndesEncuesta/public/img/endes_logo.png" alt="" width="30" height="30"> -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                </svg>
+              </a>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item" id="nomencu">SANDY GABRIELA ALVA CACHIQUE</li>
+                  <li class="breadcrumb-item" id="nomeconglo">4268</li>
+                  <li class="breadcrumb-item" id="nomevivi">001</li>
+                  <li class="breadcrumb-item" id="nomehog">01</li>
+                </ol>
+              </nav>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container mb-5">-</div>
+    <div class="container mt-5" id="cajaconteos">
+        <!-- <div class="table-responsive">
+            <table class="table align-middle">
+                <thead class="table-dark">
+                <tr >
+                    <th colspan="10">Cuestionario del Hogar</th>
+                </tr>
+                <tr>
+                    <th scope="col">Secciones</th>
+                    <th scope="col">Omi. F.</th>
+                    <th scope="col">Fra. I.</th>
+                    <th scope="col">Reg. I.</th>
+                    <th scope="col">Omi. F.</th>
+                    <th scope="col">Fra. I.</th>
+                    <th scope="col">Reg. I.</th>
+                    <th scope="col">Fra. I.</th>
+                    <th scope="col">Reg. I.</th>
+                    <th scope="col">Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Seccion 1</th>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Seccion 2</th>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Seccion 3</th>
+                        <td >4</td>
+                        <td>3</td>
+                        <td>7</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+    </div>
+
+
+    <script src="../recursos/js/bootstrap.min.js" ></script>
+    <script>
+
+
+
+        // Obtener datos 
+        function obtenerDatosLogin() {
+            // Abrir la base de datos
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+
+            request.onsuccess = function(event) {
+                var db = event.target.result;
+
+                // Iniciar una transacción de lectura
+                var transaction = db.transaction(["usuariosbd"], "readonly");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore("usuariosbd");
+
+                // Obtener todos los objetos del almacén
+                var requestGetAll = objectStore.getAll();
+
+
+                requestGetAll.onsuccess = function(event) {
+                    var data = event.target.result;
+                    console.log("Datos obtenidos.usu...:", data);
+
+                    document.querySelector("#nomencu").textContent = data[0].nomencu
+                    document.querySelector("#nomeconglo").textContent = data[0].codconglo
+                    document.querySelector("#nomevivi").textContent = data[0].codvivi
+                    document.querySelector("#nomehog").textContent = data[0].codhog
+                    
+                };
+
+                requestGetAll.onerror = function(event) {
+                console.log("Error al obtener los datos");
+                };
+            };
+        }
+
+        obtenerDatosLogin()
+
+
+
+        function obtenerDatosFinal() {
+            var request = indexedDB.open('miBaseDeDatos2', 1);
+
+            request.onerror = function(event) {
+            console.log('Error al abrir la base de datos');
+            };
+
+            request.onsuccess = function(event) {
+            var db = event.target.result;
+
+            var objectStoreNames = Array.from(db.objectStoreNames);
+
+            var transaction = db.transaction(objectStoreNames, 'readonly');
+
+            var allData = {};
+
+            var objectStoreCount = objectStoreNames.length;
+            var completedCount = 0;
+
+            objectStoreNames.forEach(function(objectStoreName) {
+                var objectStore = transaction.objectStore(objectStoreName);
+                var request = objectStore.getAll();
+
+                request.onsuccess = function(event) {
+                    allData[objectStoreName] = event.target.result;
+                    completedCount++;
+
+                    if (completedCount === objectStoreCount) {
+                        console.log("datos getttt",allData);
+                        
+                        let cajaconteos = document.querySelector("#cajaconteos")
+
+                        Object.entries(allData).forEach(([key, value]) => {
+                            
+                            let soloObs = []
+
+                            value.forEach(ele => {
+                                if(ele.consistenciai == 0 && 
+                                    ele.asumresp == 0 &&
+                                    ele.errorc == 0 &&
+                                    ele.fraseo == 0 &&
+                                    ele.inducer == 0 &&
+                                    ele.nrcons == 0 &&
+                                    ele.omit == 0 &&
+                                    ele.registroi == 0 &&
+                                    ele.sondeoi == 0){
+                                        
+                                }else{
+                                    soloObs.push(ele)
+                                }
+                                
+                            });
+
+                            //console.log(key,soloObs)
+                            let red = creaTabla(key, soloObs)
+                            if(key != "usuariosbd" && key != "usuariosfinalbd" && key != "csmedipres" && key != "chantrohemo" 
+                            && key != "chyodoclo" && key != "antromediantro" && key != "antrohemoglo" && key != "antromanequip" && key != "antrodiagnos" 
+                            && soloObs.length>0){
+                                cajaconteos.insertAdjacentHTML("beforeend", red)
+                                //console.log(red)
+                            }
+                            
+
+                        });
+
+                    }
+                };
+
+                request.onerror = function(event) {
+                    console.log('Error al obtener los datos del object store: ' + objectStoreName);
+                };
+            });
+            };
+
+        }
+
+
+        function creaTabla(nomcuestio, array){
+           return  html = `<div class="table-responsive">
+            <table class="table align-middle">
+                <thead >
+                <tr style="color: white; background: ${nomcuestio.substring(0, 2)=="ch"?"#DFBF2E":nomcuestio.substring(0, 2)=="ci"?"#C03731":nomcuestio.substring(0, 2)=="cs"?"#57892D":"#DFBF2E"};">
+                    <th colspan="11">Cuestionario ${nomcuestio.substring(0, 2)=="ch"?"Hogar":nomcuestio.substring(0, 2)=="ci"?"Individual":nomcuestio.substring(0, 2)=="cs"?"Salud":"Hogar"} - ${nomcuestio}</th>
+                </tr>
+                <tr class="table-dark">
+                    <th scope="col">Preguntas</th>
+                    <th scope="col">Omi. F.</th>
+                    <th scope="col">Fra. I.</th>
+                    <th scope="col">Reg. I.</th>
+                    <th scope="col">Err. C.</th>
+                    <th scope="col">Sond. I.</th>
+                    <th scope="col">Ind. R.</th>
+                    <th scope="col">No. R. C.</th>
+                    <th scope="col">Cons. I.</th>
+                    <th scope="col">Asum. R.</th>
+                    <th scope="col">Observación</th>
+                </tr>
+                </thead>
+                <tbody>
+                    ${array.map(el=> `<tr>
+                                        <td>${el.id}</td>
+                                        <td>${el.omit == 0 ? "No" :"<b style=color:red;>Si</b>"}</td>
+                                        <td>${el.fraseo == 0 ? "No" :"<b style=color:red;>Si</b>"}</td>
+                                        <td>${el.registroi == 0 ? "No" :"<b style=color:red;>Si</b>"}</td>
+                                        <td>${el.errorc == 0 ? "No" :"<b style=color:red;>Si</b>"}</td>
+                                        <td>${el.sondeoi == 0 ? "No" :"<b style=color:red;>Si</b>"}</td>
+                                        <td>${el.inducer == 0 ? "No" :"<b style=color:red;>Si</b>"}</td>
+                                        <td>${el.nrcons == 0 ? "No" :"<b style=color:red;>Si</b>"}</td>
+                                        <td>${el.consistenciai == 0 ? "No" :"<b style=color:red;>Si</b>"}</td>
+                                        <td>${el.asumresp == 0 ? "No" :"<b style=color:red;>Si</b>"}</td>
+                                        <td>${el.obs}</td>
+                                      </tr>`).join('')}
+                </tbody>
+            </table>
+        </div>`
+        }
+
+
+        obtenerDatosFinal()
+
+    </script>
+</body>
+</html>

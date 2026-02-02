@@ -1,0 +1,21 @@
+{
+    "name": "Seguimiento Endes V1.0 2025 REC.",
+    "short_name": "Seguimiento Endes V1.0 2025 REC.",
+    "theme_color": "#2196f3",
+    "background_color": "#2196f3",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "start_url": ".",
+    "icons":[
+        {
+          "src":"recursos/256.png",
+          "sizes": "256x256",
+          "type": "image/png"
+        },
+        {
+          "src":"recursos/128.png",
+          "sizes": "128x128",
+          "type": "image/png"
+        }
+      ]
+}

@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" >
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            /* background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); */
+            background: linear-gradient(180deg, #7a1036d9, #db69a2, #c7abb9);
+        }
+        .main{
+            width: 70%;
+            height: 670px;
+            /* background: red; */
+            overflow: hidden;
+            /* background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover; */
+            border-radius: 10px;
+            box-shadow: 5px 20px 50px #000;
+        }
+        #chk{
+            display: none;
+        }
+        .signup{
+            position: relative;
+            width:100%;
+            height: 100%;
+        }
+        label{
+            color: #fff;
+            font-size: 2.3em;
+            justify-content: center;
+            display: flex;
+            margin: 60px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .5s ease-in-out;
+        }
+        input{
+            width: 84%;
+            height: 20px;
+            background: #e0dede;
+            justify-content: center;
+            display: flex;
+            margin: 20px auto;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+        }
+        button{
+            width: 88%;
+            height: 40px;
+            margin: 10px auto;
+            justify-content: center;
+            display: block;
+            color: #fff;
+            background: #573b8a;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 20px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            transition: .2s ease-in;
+            cursor: pointer;
+        }
+        button:hover{
+            background: #6d44b8;
+        }
+        .login{
+            height: 460px;
+            background: #eee;
+            border-radius: 60% / 10%;
+            transform: translateY(-180px);
+            transition: .8s ease-in-out;
+        }
+        .login label{
+            color: #573b8a;
+            transform: scale(.6);
+        }
+
+        #chk:checked ~ .login{
+            transform: translateY(-500px);
+        }
+        #chk:checked ~ .login label{
+            transform: scale(1);	
+        }
+        #chk:checked ~ .signup label{
+            transform: scale(.6);
+        }
+
+        .seleclas{
+            width: 88%;
+            background: #e0dede;
+            justify-content: center;
+            display: flex;
+            margin: 20px auto;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+        }
+
+
+        
+        img#logoimg {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        @media only screen and (max-width: 420px) {
+            .main {
+                width: 85%;
+            }
+            /* ol.breadcrumb {
+                font-size: 0.7rem;
+            } */
+        }
+      
+
+        option.antro {
+            background: #573b8a;
+            color: white;
+        }
+
+
+        h3 {
+            text-align: center;
+            color: #573b8a;
+        }
+
+        div#version {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+
+
+    </style>
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form>
+					<label for="chk" aria-hidden="true"><img src="recursos/girl.png" alt="Girl in a jacket" id="logoimg" ></label>
+                    <div id="version">V1.0 2025 REC.</div>
+					<input type="text" name="txt" placeholder="Nombre Supervisora" required="" disabled value="" id="nomsup" data-dni="">
+                    <input type="hidden" name="txt"  disabled value="" id="ccdd">
+                    <input type="hidden" name="txt"  disabled value="" id="equipo">
+                    <select name="select" class="seleclas" id="nomencu"></select>
+                    <select name="select" class="seleclas" id="nomconglo"></select>
+                    <select name="select" class="seleclas" id="nomvivi"></select>
+                    <select name="select" class="seleclas" id="nomhog">
+                        <option value="01" class="recohog">Hogar - 01</option>
+                        <option value="02" class="recohog">Hogar - 02</option>
+                        <option value="03" class="recohog">Hogar - 03</option>
+                        <option value="04" class="recohog">Hogar - 04</option>
+                        <option value="05" class="recohog">Hogar - 05</option>
+                    </select>
+					<button id="btningresar">Ingresar</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form id="upload">
+					<label for="chk" aria-hidden="true">Archivo</label>
+                    <h3>Cargar Marco</h3>
+                    <input type="file"  id="file" >
+					<!-- <button id="exportarjson">Cargar</button> -->
+				</form>
+                <h3>Importar archivo sin conexión</h3>
+                <input type="file"  id="inputImport" >
+			</div>
+	</div>
+
+
+    <script src="recursos/js/filesaver.js"></script>
+    <script src="recursos/js/jszip.js"></script>
+    <script src="recursos/js/xml.js"></script>
+    <script type="module">
+
+        let form = document.querySelector('#upload');
+        let file = document.querySelector('#file');
+        let json2
+
+        let valoresClav = ""
+        let filename3 = ''
+
+
+        // Abrir la base de datos (o crearla si no existe)
+        var request = indexedDB.open("miBaseDeDatos2", 1);
+
+        // Manejador para el evento de éxito
+        request.onsuccess = function(event) {
+        var db = event.target.result;
+        console.log("Base de datos abierta correctamente");
+
+        // Hacer algo con la base de datos...
+        };
+
+        // Manejador para el evento de error
+        request.onerror = function(event) {
+        console.log("Error al abrir la base de datos");
+        };
+
+        // Manejador para el evento de actualización (se ejecuta cuando se cambia la versión de la base de datos)
+        request.onupgradeneeded = function(event) {
+        var db = event.target.result;
+
+        // Crear un almacén de objetos (equivalente a una tabla en una base de datos relacional)
+        var objectStore = db.createObjectStore("usuariosbd", { keyPath: "id" });
+        var objectStorefinal = db.createObjectStore("usuariosfinalbd", { keyPath: "id" });
+        var objectStorev2 = db.createObjectStore("chcaracmihog", { keyPath: "id" });
+        var objectStorev3 = db.createObjectStore("chcaracvivi", { keyPath: "id" });
+
+        var objectStorev4 = db.createObjectStore("chmortalidad" , { keyPath: "id"});
+        var objectStorev5 = db.createObjectStore("chprosocia" , { keyPath: "id"});
+        var objectStorev6 = db.createObjectStore("cianteced" , { keyPath: "id"});
+        var objectStorev7 = db.createObjectStore("cireproduc" , { keyPath: "id"});
+        var objectStorev8 = db.createObjectStore("cihistoria" , { keyPath: "id"});
+        var objectStorev9 = db.createObjectStore("ci226240" , { keyPath: "id"});
+        var objectStorev10 = db.createObjectStore("cianticoncep" , { keyPath: "id"});
+        var objectStorev11 = db.createObjectStore("ciseccion4a" , { keyPath: "id"});
+        var objectStorev12 = db.createObjectStore("ciinmunizaci" , { keyPath: "id"});
+        var objectStorev13 = db.createObjectStore("citramo1" , { keyPath: "id"});
+        var objectStorev14 = db.createObjectStore("citramo2" , { keyPath: "id"});
+        var objectStorev15 = db.createObjectStore("citramo3" , { keyPath: "id"});
+        var objectStorev16 = db.createObjectStore("citramo4" , { keyPath: "id"});
+        var objectStorev17 = db.createObjectStore("citramo5" , { keyPath: "id"});
+        var objectStorev18 = db.createObjectStore("citramo6" , { keyPath: "id"});
+        var objectStorev19 = db.createObjectStore("citramo6a" , { keyPath: "id"});
+        var objectStorev20 = db.createObjectStore("ci479496" , { keyPath: "id"});
+        var objectStorev21 = db.createObjectStore("cinupciali" , { keyPath: "id"});
+        var objectStorev22 = db.createObjectStore("ciprefecund" , { keyPath: "id"});
+        var objectStorev23 = db.createObjectStore("citrabajo" , { keyPath: "id"});
+        var objectStorev24 = db.createObjectStore("cisida" , { keyPath: "id"});
+        var objectStorev25 = db.createObjectStore("cimormater" , { keyPath: "id"});
+        var objectStorev26 = db.createObjectStore("civiolen" , { keyPath: "id"});
+        var objectStorev27 = db.createObjectStore("cicarne" , { keyPath: "id"});
+        var objectStorev28 = db.createObjectStore("csanteced" , { keyPath: "id"});
+        var objectStorev29 = db.createObjectStore("cshiperdi" , { keyPath: "id"});
+        var objectStorev30 = db.createObjectStore("csfactore" , { keyPath: "id"});
+        var objectStorev31 = db.createObjectStore("csocularbu" , { keyPath: "id"});
+        var objectStorev32 = db.createObjectStore("cscancer" , { keyPath: "id"});
+        var objectStorev33 = db.createObjectStore("cstbcds" , { keyPath: "id"});
+        var objectStorev34 = db.createObjectStore("csvihsida" , { keyPath: "id"});
+        var objectStorev35 = db.createObjectStore("csmental" , { keyPath: "id"});
+        var objectStorev36 = db.createObjectStore("csninos" , { keyPath: "id"});
+        var objectStorev37 = db.createObjectStore("csmedici" , { keyPath: "id"});
+
+        var objectStorev38 = db.createObjectStore("csmedipres" , { keyPath: "id"});
+        var objectStorev39 = db.createObjectStore("chantrohemo" , { keyPath: "id"});
+        var objectStorev40 = db.createObjectStore("chyodoclo" , { keyPath: "id"});
+
+
+        var objectStorev38 = db.createObjectStore("antromediantro" , { keyPath: "id"});
+        var objectStorev39 = db.createObjectStore("antrohemoglo" , { keyPath: "id"});
+        var objectStorev40 = db.createObjectStore("antromanequip" , { keyPath: "id"});
+        var objectStorev41 = db.createObjectStore("antrodiagnos" , { keyPath: "id"});
+
+        //var objectStorev42 = db.createObjectStore("cicarne" , { keyPath: "id"});
+
+        // Crear un índice para buscar por nombre
+        //objectStore.createIndex("nombre", "nombre", { unique: false });
+
+        console.log("Base de datos actualizada");
+        };
+
+
+
+
+        // Añadir datos a la base de datos
+        function agregarDatosv2(preg, ccdd, equipo, codsup, nomsup, codencu, cargoencu , nomencu, codconglo, codvivi, codhog) {
+            // Abrir la base de datos
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+
+            request.onsuccess = function(event) {
+                var db = event.target.result;
+
+                // Iniciar una transacción de escritura
+                var transaction = db.transaction(["usuariosbd"], "readwrite");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore("usuariosbd");
+
+
+                var data = ''
+                var objeto = ''
+                //obtengo todos los valores
+                var requestGetAll = objectStore.getAll();
+                requestGetAll.onsuccess = function(event) {
+                    data = event.target.result;
+                    //console.log("Datos obtenidos desde agregar:", data.length);
+
+                    console.log("fuegooo",data)
+                    // Crear un objeto para almacenar en el almacén
+                    objeto = { id: data[0]?.id?data[0].id:1 
+                              ,ccdd:ccdd
+                              ,equipo:equipo
+                              ,codsup: codsup
+                              ,nomsup: nomsup
+                              ,codencu: codencu
+                              ,cargoencu:cargoencu
+                              ,nomencu: nomencu
+                              ,codconglo: codconglo
+                              ,codvivi: codvivi
+                              ,codhog: codhog};
+
+                    // Añadir el objeto al almacén
+
+                    data.forEach(el => {
+                        console.log("dd")
+                        if(el.codconglo == codconglo &&  el.codencu == codencu && el.codsup == codsup && el.codvivi == codvivi && el.codhog == codhog){
+                            console.log("es el mismo registro continuaiiiiiiiiii")
+                            console.log("siguiente pagina al ser el mismo registro....")
+                            setTimeout(() => {
+                                window.location.href = "html/index5.html";
+                            }, 2500);
+
+                        }else{
+                            console.log("expoprtarrrrriiiiiiiii")
+                            //exportCombinedCollections(data)
+                            obtenerDatosFinal(true)
+                            
+                        }
+                    });
+
+                    console.log("los datosss", data)
+
+                    var requestAdd = objectStore.add(objeto);
+
+                    requestAdd.onsuccess = function(event) {
+                        console.log("Datos agregados correctamente");
+                        console.log("siguiente pagina desde el un success......");
+
+                        setTimeout(() => {
+                            window.location.href = "html/index5.html";
+                        }, 2500);
+                    };
+
+                    requestAdd.onerror = function(event) {
+                        console.log("Error al agregar los datos");
+                    };
+
+                    
+                };
+            
+                
+            };
+        }
+
+
+
+        // Añadir datos a la base de datos  TABLA USUARIOS DEL ARCHIVO IMPORTADO JSON
+        function agregarDatosImportadoJson(valor, key) {
+            // Abrir la base de datos
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+
+            request.onsuccess = function(event) {
+                var db = event.target.result;
+
+                // Iniciar una transacción de escritura
+                var transaction = db.transaction([key], "readwrite");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore(key);
+
+
+                //obtengo todos los valores
+                var requestGetAll = objectStore.getAll();
+                requestGetAll.onsuccess = function(event) {
+                    var data = event.target.result;
+                    //console.log("Datos obtenidos desde agregar:", data.length);
+
+                    // Crear un objeto para almacenar en el almacén
+                    //var objeto = valor[0];
+
+                    console.log("los datosss", data)
+
+                    let requestAdd = ''
+
+                    if(valor.length > 1){
+
+                        valor.forEach(el => {
+                             requestAdd = objectStore.add(el);
+                        });
+
+
+                    }else{
+                        let objeto = valor[0];
+                        console.log("hhhhhhhhhhhhhh", objeto, valor,key)
+                         requestAdd = objectStore.add(objeto);
+                    }
+
+                    
+
+                    requestAdd.onsuccess = function(event) {
+                        console.log("Datos agregados correctamente");
+
+                    };
+
+                    requestAdd.onerror = function(event) {
+                        console.log("Error al agregar los datos");
+                    };
+
+                    
+                };
+            
+                
+            };
+        }
+
+
+        //////////////////CARGAR TABLA PRINCIPAL
+
+
+        function agregarDatosPrincipal(usuarios, conglomerados ,viviendas, segmen, marco) {
+            // Abrir la base de datos
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+
+            request.onsuccess = function(event) {
+                var db = event.target.result;
+
+                // Iniciar una transacción de escritura
+                var transaction = db.transaction(["usuariosfinalbd"], "readwrite");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore("usuariosfinalbd");
+
+
+                var data = ''
+                var objeto = ''
+                //obtengo todos los valores
+                var requestGetAll = objectStore.getAll();
+                requestGetAll.onsuccess = function(event) {
+                    data = event.target.result;
+                    //console.log("Datos obtenidos desde agregar:", data.length);
+
+                    // Crear un objeto para almacenar en el almacén
+                    console.log("ddd",usuarios, viviendas)
+                    // objeto = { id:1, usu: usuarios ,conglo: conglomerados
+                    //           ,vivi: viviendas, segmen:segmen, marco:marco};
+
+                    if(data.length == 0){
+                        objeto = { id:1, usu: usuarios ,conglo: conglomerados
+                              ,vivi: viviendas, segmen:segmen, marco:marco};
+                    }else{
+                        objeto = { id:1, usu: usuarios ,conglo: [ data[0].conglo, conglomerados].flat(Infinity)
+                              ,vivi: [data[0].vivi,  viviendas].flat(Infinity), segmen:[data[0].segmen, segmen].flat(Infinity), marco:marco};
+                    }
+
+                    objectStore.clear()
+
+                
+
+                    console.log("los datosss usufinal", data)
+
+                    var requestAdd = objectStore.add(objeto);
+
+                    requestAdd.onsuccess = function(event) {
+                        console.log("Datos agregados correctamente");
+                    };
+
+                    requestAdd.onerror = function(event) {
+                        console.log("Error al agregar los datos");
+                    };
+
+                    
+                };
+            
+                
+            };
+        }
+
+
+
+
+         /////////////////////////todas las colecciones///////////////////////
+         function obtenerDatosFinal(condicional) {
+            var request = indexedDB.open('miBaseDeDatos2', 1);
+
+            request.onerror = function(event) {
+            console.log('Error al abrir la base de datos');
+            };
+
+            request.onsuccess = function(event) {
+            var db = event.target.result;
+
+            var objectStoreNames = Array.from(db.objectStoreNames);
+
+            var transaction = db.transaction(objectStoreNames, 'readonly');
+
+            var allData = {};
+
+            var objectStoreCount = objectStoreNames.length;
+            var completedCount = 0;
+
+            objectStoreNames.forEach(function(objectStoreName) {
+                var objectStore = transaction.objectStore(objectStoreName);
+                var request = objectStore.getAll();
+
+                request.onsuccess = function(event) {
+                    allData[objectStoreName] = event.target.result;
+                    completedCount++;
+
+                    if (completedCount === objectStoreCount) {
+                        console.log("datos a exportar",allData);
+                        let nomarchi = `${allData.usuariosbd[0].codsup}_${allData.usuariosbd[0].codconglo}_${allData.usuariosbd[0].codvivi}_${allData.usuariosbd[0].codhog}_${allData.usuariosbd[0].codencu}`
+                        
+                        console.error("nomarchi", nomarchi, allData)
+                        //delete allData.usuariosfinalbd
+                        exportCombinedCollections(allData, nomarchi)
+                        eliminaDatos()
+
+
+                        if(condicional){
+                            let codsuper = document.querySelector("#nomsup").getAttribute("data-dni")
+                            let nomsuper = document.querySelector("#nomsup").value
+                            let ccdd = document.querySelector("#ccdd").value
+                            let equipo = document.querySelector("#equipo").value
+                            let cod = document.querySelector("#nomencu")
+                            let codencu = cod.options[cod.selectedIndex].value
+                            let nomencu = cod.options[cod.selectedIndex].dataset.nombre
+                            let cargoencu = cod.options[cod.selectedIndex].dataset.usu
+
+                            let codconglo1 = document.querySelector("#nomconglo")
+                            let codconglo2 = codconglo1.options[codconglo1.selectedIndex].value
+
+                            let codvivi = document.querySelector("#nomvivi")
+                            let codvivi2 = codvivi.options[codvivi.selectedIndex].value
+
+                            let codhog = document.querySelector("#nomhog")
+                            let codhog2 = codhog.options[codhog.selectedIndex].value
+
+                            console.log("iiii",codconglo2, codvivi2, codhog2 )
+
+                            agregarDatosv2(1,ccdd, equipo, codsuper,nomsuper, codencu,cargoencu, nomencu, codconglo2, codvivi2, codhog2 )
+                            console.log("ingreso true")
+                        }
+
+                        
+
+                    
+                    }
+                };
+
+                request.onerror = function(event) {
+                    console.log('Error al obtener los datos del object store: ' + objectStoreName);
+                };
+            });
+            };
+
+        }
+
+        
+
+
+        /////////////////////////todas las colecciones a importar localmente///////////////////////
+        function ImportarDatosFinalLocal(objLista) {
+            var request = indexedDB.open('miBaseDeDatos2', 1);
+
+            request.onerror = function(event) {
+            console.log('Error al abrir la base de datos');
+            };
+
+            request.onsuccess = function(event) {
+            var db = event.target.result;
+
+            var objectStoreNames = Array.from(db.objectStoreNames);
+
+            var transaction = db.transaction(objectStoreNames, 'readonly');
+
+            var allData = {};
+
+            var objectStoreCount = objectStoreNames.length;
+            var completedCount = 0;
+
+            objectStoreNames.forEach(function(objectStoreName) {
+                var objectStore = transaction.objectStore(objectStoreName);
+                var request = objectStore.getAll();
+
+                request.onsuccess = function(event) {
+                    allData[objectStoreName] = event.target.result;
+                    completedCount++;
+
+                    if (completedCount === objectStoreCount) {
+                        console.log("datos a importar localmente",allData);
+                        
+                    }
+                };
+
+                request.onerror = function(event) {
+                    console.log('Error al obtener los datos del object store: ' + objectStoreName);
+                };
+            });
+            };
+
+        }
+
+
+
+        /////////////////////funcion eliminar todos los datos////////////////////////
+
+
+        function eliminaDatos(){
+
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+            request.onsuccess = function(event) {
+                var db = event.target.result;
+                var transaction = db.transaction(db.objectStoreNames, "readwrite");
+
+                var storeNames = Array.from(transaction.objectStoreNames);
+                storeNames.forEach(function(storeName) {
+                    var objectStore = transaction.objectStore(storeName);
+                    console.log("yuuu",objectStore.name)
+                    if(objectStore.name != 'usuariosfinalbd'){
+                        objectStore.clear();
+                    }
+                    
+                });
+
+                transaction.oncomplete = function(event) {
+                    console.log("Registros eliminados con éxito en todos los almacenes");
+                    db.close();
+                };
+            };
+
+
+
+        }
+
+
+
+
+
+        // Obtener datos de la base de datos
+        function obtenerDatos() {
+            // Abrir la base de datos
+            var request = indexedDB.open("miBaseDeDatos2", 1);
+
+            request.onsuccess = function(event) {
+                var db = event.target.result;
+
+                
+                /////////////////////////por bdusufinal//////////////////////
+
+
+                // Iniciar una transacción de lectura
+                var transaction = db.transaction(["usuariosfinalbd"], "readonly");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore("usuariosfinalbd");
+
+                // Obtener todos los objetos del almacén
+                var requestGetAll = objectStore.getAll();
+
+
+                requestGetAll.onsuccess = function(event) {
+                    var data = event.target.result;
+                    console.log("Datos obtenidos.. final..:", data);
+
+                   
+                    document.querySelector("#ccdd").value = data[0].segmen[0].CCDD._text
+                    document.querySelector("#equipo").value = data[0].segmen[0].EQUIPO._text
+
+                    let list = document.querySelector('#nomencu');
+
+                    data[0].usu.forEach(el => {
+                        if(el.CARGO_ID._text == 21){
+                            list.insertAdjacentHTML('afterbegin', `<option class="recousu" data-usu="${el.CARGO_ID._text}" data-nombre="${el.NOMBRES._text} ${el.APELLIDOS._text}" value="${el.USUARIO._text}">${el.NOMBRES._text} ${el.APELLIDOS._text} - ENC.</option>`);
+                        }else if(el.CARGO_ID._text == 22){
+
+                            console.log("reffffffffffffff", el)
+
+                            if(data[0].marco[0] == el.USUARIO._text){
+                                    
+                                document.querySelector("#nomsup").value =  `${el.NOMBRES._text} ${el.APELLIDOS._text}`
+                                document.querySelector("#nomsup").setAttribute("data-dni", el.USUARIO._text)
+                                document.querySelector("#logoimg").setAttribute("src", `https://iinei.inei.gob.pe/iinei/asistencia/fotos/${el.USUARIO._text}.jpg`)
+                            }
+                        }
+
+                        if(el.CARGO_ID._text == 25){
+                            list.insertAdjacentHTML('afterbegin', `<option class="recousu antro" data-usu="${el.CARGO_ID._text}" data-nombre="${el.NOMBRES._text} ${el.APELLIDOS._text}" value="${el.USUARIO._text}">${el.NOMBRES._text} ${el.APELLIDOS._text} - ANTRO.</option>`);
+                        }
+                    });
+
+                    let conglo = document.querySelector('#nomconglo');
+                    data[0].conglo.forEach(el => {
+                        conglo.insertAdjacentHTML('afterbegin', `<option class="recoconglo" value="${el}">${el}</option>`);
+                    });
+                    
+
+                    let marco = document.querySelector('#nomvivi');
+                    data[0].vivi.forEach(el => {
+                        marco.insertAdjacentHTML('afterbegin', `<option class="recovivi" data-filtro=${el.conglo} value="${el.vivi}">${el.vivi}</option>`);
+                    });
+                    
+                    
+
+                };
+
+                requestGetAll.onerror = function(event) {
+                console.log("Error al obtener los datos");
+                };
+
+
+
+                ///////////////////////////////////////////////////
+
+                // Iniciar una transacción de lectura
+                var transaction = db.transaction(["usuariosbd"], "readonly");
+
+                // Obtener el almacén de objetos
+                var objectStore = transaction.objectStore("usuariosbd");
+
+                // Obtener todos los objetos del almacén
+                var requestGetAll = objectStore.getAll();
+
+
+                requestGetAll.onsuccess = function(event) {
+                    var data = event.target.result;
+                    console.log("Datos obtenidos....:", data);
+
+                    valoresClav = data
+
+                    if(data.length > 0){
+                        console.log("tiene un reg")
+
+                        // document.querySelector("#ccdd").value = data[0].ccdd
+                        // document.querySelector("#equipo").value = data[0].equipo
+
+                        document.querySelectorAll(".recousu").forEach(el => {
+                            if(el.value == data[0].codencu){
+                                el.setAttribute("selected", true)
+                            }
+                        });
+
+                        document.querySelectorAll(".recoconglo").forEach(el => {
+                            if(el.value == data[0].codconglo){
+                                el.setAttribute("selected", true)
+                            }
+                        });
+
+                        document.querySelectorAll(".recovivi").forEach(el => {
+                            if(el.value == data[0].codvivi){
+                                el.setAttribute("selected", true)
+                            }
+
+
+                            if(el.getAttribute("data-filtro") == data[0].codconglo){
+                                //console.log(el.value)
+                                el.setAttribute("style","display:block")
+                            }
+
+                            if(el.getAttribute("data-filtro") != data[0].codconglo){
+                                //console.log(el.value)
+                                el.setAttribute("style","display:none")
+                            }
+
+                        });
+
+                        document.querySelectorAll(".recohog").forEach(el => {
+                            if(el.value == data[0].codhog){
+                                el.setAttribute("selected", true)
+                            }
+                        });
+
+                    }
+
+
+                    
+
+                };
+
+                requestGetAll.onerror = function(event) {
+                console.log("Error al obtener los datos");
+                };
+
+
+            };
+        }
+
+        obtenerDatos()
+
+
+        ////////////////////////////////////////////////
+
+        form.addEventListener('change', handleSubmit);
+
+        function handleSubmit (event) {
+
+            // Stop the form from reloading the page
+            event.preventDefault();
+
+            // If there's no file, do nothing
+            if (!file.value.length) return;
+
+            filename3 = file.files[0].name;
+            console.log(filename3)
+
+            // Create a new FileReader() object
+            let reader = new FileReader();
+
+            // Setup the callback event to run when the file is read
+            reader.onload = function(ev) {
+                JSZip.loadAsync(ev.target.result).then(function(zip) {
+                    zip.file(`${filename3.substring(0,filename3.indexOf("."))}.xml`).async("string").then(function(data) {
+                        // data is a string
+                        // TODO Your code goes here!
+
+                        const json = xml2json(data, { spaces: 2, compact: true/*,nativeType: true*/});
+
+                        //SE GUARDA DENTRO DE JSON2 el formato convertido del xml, para trabajarlo
+                        json2 = JSON.parse(json).ENDES
+
+                        console.log("js2",json2)
+
+                        let arrUsu = []
+                        let arrConglo = []
+                        let arrVivi = []
+                        let segmen = []
+                        let marco = []
+
+                        json2.Usuario.T_USUARIO.forEach(el => {
+                            if(Array.isArray(json2.Segmentacion.T_SEGMENTACION)){
+                                console.log("es arrr")
+                                if(el.EQUIPO._text == json2.Segmentacion.T_SEGMENTACION[0].EQUIPO._text && (el.CARGO_ID._text == 21 || el.CARGO_ID._text == 22 || el.CARGO_ID._text == 25) ){
+                                    arrUsu.push(el)
+                                    if(el.CARGO_ID._text== 22){
+                                        console.log("LISTADO DE USUARIOS",el.USUARIO._text, filename3)
+
+                                       
+
+                                        const inputString = filename3
+                                        const regex = /_(.*?)_/;  
+
+                                        const matches = inputString.match(regex);
+                                        if (matches && matches.length >= 2) {
+                                            const result = matches[1];  
+                                            console.log("Si se encontró",result);  
+
+                                            if(el.USUARIO._text == result ){
+
+                                                marco.push(result)
+
+                                                document.querySelector("#nomsup").value =  `${el.NOMBRES._text} ${el.APELLIDOS._text}`
+                                                document.querySelector("#nomsup").setAttribute("data-dni", el.USUARIO._text)
+
+                                                el.CARGO_ID._text== 22 ? document.querySelector("#logoimg").setAttribute("src", `https://iinei.inei.gob.pe/iinei/asistencia/fotos/${el.USUARIO._text}.jpg`): ''
+                                            }
+
+                                        } else {
+                                            console.log("No se encontró un patrón válido.");
+                                        }
+
+
+                                        
+                                    }
+                                    
+
+
+                                    if(el.CARGO_ID._text== 21){
+                                        console.log("hola",el)
+
+                                        let list = document.querySelector('#nomencu');
+                                        list.insertAdjacentHTML('afterbegin', `<option data-usu="${el.CARGO_ID._text}" data-nombre="${el.NOMBRES._text} ${el.APELLIDOS._text}" value="${el.USUARIO._text}">${el.NOMBRES._text} ${el.APELLIDOS._text} - ENC.</option>`);
+
+                                    }
+
+                                    if(el.CARGO_ID._text== 25){
+                                        console.log("holad",el)
+
+                                        let list = document.querySelector('#nomencu');
+                                        list.insertAdjacentHTML('afterbegin', `<option class="antro" data-usu="${el.CARGO_ID._text}" data-nombre="${el.NOMBRES._text} ${el.APELLIDOS._text}" value="${el.USUARIO._text}">${el.NOMBRES._text} ${el.APELLIDOS._text} - ANTRO.</option>`);
+
+                                    }
+                                }
+                            }else{
+                                if(el.EQUIPO._text == json2.Segmentacion.T_SEGMENTACION.EQUIPO._text && (el.CARGO_ID._text == 21 || el.CARGO_ID._text == 22 || el.CARGO_ID._text == 25) ){
+                                    arrUsu.push(el)
+                                    
+                                    if(el.CARGO_ID._text== 22){
+                                        console.log("LISTADO DE USUARIOS",el.USUARIO._text, filename3)
+
+                                       
+
+                                        const inputString = filename3
+                                        const regex = /_(.*?)_/;  
+
+                                        const matches = inputString.match(regex);
+                                        if (matches && matches.length >= 2) {
+                                            const result = matches[1];  
+                                            console.log("Si se encontró",result);  
+
+                                            if(el.USUARIO._text == result ){
+
+                                                marco.push(result)
+
+                                                document.querySelector("#nomsup").value =  `${el.NOMBRES._text} ${el.APELLIDOS._text}`
+                                                document.querySelector("#nomsup").setAttribute("data-dni", el.USUARIO._text)
+
+                                                el.CARGO_ID._text== 22 ? document.querySelector("#logoimg").setAttribute("src", `https://iinei.inei.gob.pe/iinei/asistencia/fotos/${el.USUARIO._text}.jpg`): ''
+                                            }
+
+                                        } else {
+                                            console.log("No se encontró un patrón válido.");
+                                        }
+
+
+                                        
+                                    }
+
+                                    // if(el.CARGO_ID._text== 22){
+                                    //     document.querySelector("#nomsup").value =  `${el.NOMBRES._text} ${el.APELLIDOS._text}`
+                                    //     document.querySelector("#nomsup").setAttribute("data-dni", el.USUARIO._text)
+                                    // }
+                                    // el.CARGO_ID._text== 22 ? document.querySelector("#logoimg").setAttribute("src", `https://iinei.inei.gob.pe/iinei/asistencia/fotos/${el.USUARIO._text}.jpg`): ''
+
+
+                                    if(el.CARGO_ID._text== 21){
+                                        console.log("hola",el)
+
+                                        let list = document.querySelector('#nomencu');
+                                        list.insertAdjacentHTML('afterbegin', `<option data-usu="${el.CARGO_ID._text}" data-nombre="${el.NOMBRES._text} ${el.APELLIDOS._text}" value="${el.USUARIO._text}">${el.NOMBRES._text} ${el.APELLIDOS._text} - ENC.</option>`);
+
+                                    }
+
+                                    if(el.CARGO_ID._text== 25){
+                                        console.log("hola",el)
+
+                                        let list = document.querySelector('#nomencu');
+                                        list.insertAdjacentHTML('afterbegin', `<option class="antro" data-usu="${el.CARGO_ID._text}" data-nombre="${el.NOMBRES._text} ${el.APELLIDOS._text}" value="${el.USUARIO._text}">${el.NOMBRES._text} ${el.APELLIDOS._text} - ANTRO.</option>`);
+
+                                    }
+                                
+                                }
+                            }
+                        });
+
+
+                        if(Array.isArray(json2.Segmentacion.T_SEGMENTACION)){
+
+                            let conglo = document.querySelector('#nomconglo');
+                            json2.Segmentacion.T_SEGMENTACION.forEach(eli => {
+                                arrConglo.push(eli.CONGLOMERADO._text)
+                                conglo.insertAdjacentHTML('afterbegin', `<option value="${eli.CONGLOMERADO._text}">${eli.CONGLOMERADO._text}</option>`);
+                            });
+
+
+                            let marco = document.querySelector('#nomvivi');
+                            json2.Marco.T_MARCO.forEach(el => {
+                                arrVivi.push({vivi:el.NSELV._text, id:el.ID._text, conglo:el.CONGLOMERADO._text})
+                                marco.insertAdjacentHTML('afterbegin', `<option class="recovivi" data-filtro=${el.CONGLOMERADO._text} value="${el.NSELV._text}">${el.NSELV._text}</option>`);
+                            });
+
+
+
+                            segmen.push(json2.Segmentacion.T_SEGMENTACION[0]) 
+
+                            let ccdd = document.querySelector('#ccdd');
+                            ccdd.setAttribute("value",json2.Segmentacion.T_SEGMENTACION[0].CCDD._text)
+
+                            let equipo = document.querySelector('#equipo');
+                            equipo.setAttribute("value",json2.Segmentacion.T_SEGMENTACION[0].EQUIPO._text)
+
+
+                        }else{
+                            let conglo = document.querySelector('#nomconglo');
+                            arrConglo.push(json2.Segmentacion.T_SEGMENTACION.CONGLOMERADO._text)
+                            conglo.insertAdjacentHTML('afterbegin', `<option value="${json2.Segmentacion.T_SEGMENTACION.CONGLOMERADO._text}">${json2.Segmentacion.T_SEGMENTACION.CONGLOMERADO._text}</option>`);
+
+                            let marco = document.querySelector('#nomvivi');
+                            json2.Marco.T_MARCO.forEach(el => {
+                                arrVivi.push({vivi:el.NSELV._text, id:el.ID._text, conglo:el.CONGLOMERADO._text})
+                                marco.insertAdjacentHTML('afterbegin', `<option class="recovivi" data-filtro=${el.CONGLOMERADO._text} value="${el.NSELV._text}">${el.NSELV._text}</option>`);
+
+                            });
+
+                            segmen.push(json2.Segmentacion.T_SEGMENTACION) 
+
+                            let ccdd = document.querySelector('#ccdd');
+                            ccdd.setAttribute("value",json2.Segmentacion.T_SEGMENTACION.CCDD._text)
+
+                            let equipo = document.querySelector('#equipo');
+                            equipo.setAttribute("value",json2.Segmentacion.T_SEGMENTACION.EQUIPO._text)
+                        }
+
+
+                        //console.log(arrUsu, arrVivi)
+                        
+                        setTimeout(() => {
+                            agregarDatosPrincipal(arrUsu,arrConglo ,arrVivi, segmen, marco)
+                        }, 1500);
+
+                    })
+                }).catch(function(err) {
+                    console.error("Failed to open", file, " as ZIP file:", err);
+                })
+            };
+            reader.onerror = function(err) {
+                console.error("Failed to read file", err);
+            }
+            reader.readAsArrayBuffer(file.files[0]);
+
+            //console.log(file.files[0])
+
+        }
+
+
+
+        document.querySelector("#btningresar").addEventListener('click', async (e)=>{
+            e.preventDefault()
+
+            let codsuper = document.querySelector("#nomsup").getAttribute("data-dni")
+            let nomsuper = document.querySelector("#nomsup").value
+            let ccdd = document.querySelector("#ccdd").value
+            let equipo = document.querySelector("#equipo").value
+            let cod = document.querySelector("#nomencu")
+            let codencu = cod.options[cod.selectedIndex].value
+            let nomencu = cod.options[cod.selectedIndex].dataset.nombre
+            let cargoencu = cod.options[cod.selectedIndex].dataset.usu
+
+            let codconglo1 = document.querySelector("#nomconglo")
+            let codconglo2 = codconglo1.options[codconglo1.selectedIndex].value
+
+            let codvivi = document.querySelector("#nomvivi")
+            let codvivi2 = codvivi.options[codvivi.selectedIndex].value
+
+            let codhog = document.querySelector("#nomhog")
+            let codhog2 = codhog.options[codhog.selectedIndex].value
+
+            console.log("iiii",codconglo2, codvivi2, codhog2 )
+
+            let peticion = await fetchData(codsuper,codencu, codconglo2, codvivi2,codhog2 );
+
+            console.log("es la peticionnnnnnnnn",peticion)
+            
+
+
+            if(peticion.length == 0){
+                console.log("no existe en la bd servidor", peticion)
+                agregarDatosv2(1,ccdd,equipo, codsuper,nomsuper, codencu,cargoencu, nomencu, codconglo2, codvivi2 , codhog2)
+            }else if(peticion == "nc"){
+                console.log("no tienes conexion a internet...........")
+                console.log(peticion)
+                var userConfirmed = confirm("No cuentas con conexión a internet:\n click en 'Cancelar' si desea retomar con una evaluación, que ya existe, busque el archivo en descargas e impórtelo \n Click en 'Aceptar' si es una evaluación nueva.");
+                if (userConfirmed) {
+                    agregarDatosv2(1,ccdd,equipo, codsuper,nomsuper, codencu,cargoencu, nomencu, codconglo2, codvivi2 , codhog2)
+                } else {
+                    // Cancel the deletion
+                }
+                
+            }else{
+                console.log("si encuentra el valor", peticion ,JSON.parse(JSON.parse(peticion[0].chcaracmihog)))
+
+
+                obtenerDatosFinal(false)
+
+                let arr = [{"usuariosbd":[{"id":peticion[0].id,
+                "ccdd":peticion[0].ccdd,
+                "equipo":peticion[0].equipo,
+                "codsup":peticion[0].codsup,
+                "nomsup":peticion[0].nomsup,
+                "codencu":peticion[0].codencu,
+                "nomencu":peticion[0].nomencu,
+                "cargoencu":peticion[0].cargoencu,
+                "codconglo":peticion[0].codconglo,
+                "codvivi":peticion[0].codvivi,
+                "codhog":peticion[0].codhog}]}]
+
+                Object.entries(peticion[0]).forEach(([key, value]) => {
+                    //console.log(key,value)
+                    if(key != "codconglo" && key != "codencu" && key != "codhog" && key != "codsup" && key != "codvivi" && key != "ccdd" && key != "equipo" && key != "estado" && key != "fecha" 
+                    && key != "id" && key != "nomencu" && key != "nomsup"){
+                        arr.push({[key]: JSON.parse(JSON.parse(value))})
+                    }
+
+                });
+                
+
+                console.log("gao",arr)
+
+                // arr.forEach(el => {
+                //     agregarDatosImportadoJson(Object.values(el)[0], Object.keys(el)[0])
+                // });
+
+                setTimeout(() => {
+                    arr.forEach(el => {
+                        agregarDatosImportadoJson(Object.values(el)[0], Object.keys(el)[0])
+                    });
+                }, 2000);
+
+                setTimeout(() => {
+                    window.location.href = "html/index5.html";
+                    console.log("despues de 3 segundos , si encuentra valor y lo enserta localmente...")
+                }, 3000);
+
+                
+
+            }
+            
+
+            //agregarDatosv2(1, codsuper,nomsuper, codencu, nomencu, codconglo2, codvivi2 , codhog2)
+            // let codvivi = document.querySelector("#")
+
+            console.log(e.target)
+        })
+
+
+        async function fetchData(codsup,codencu,codconglo,codvivi,codhog) {
+            try {
+                const response = await fetch(`https://aplications.inei.gob.pe/WebEndesEncuesta/public/api/example?codsup=${codsup}&codencu=${codencu}&codconglo=${codconglo}&codvivi=${codvivi}&codhog=${codhog}`); // Realiza la solicitud HTTP y espera la respuesta
+                if (!response.ok) {
+                throw new Error('Error al obtener los datos'); // Maneja errores de respuesta no exitosa
+                }
+                
+                const data = await response.json(); // Convierte la respuesta en formato JSON
+                //console.log(JSON.parse(data[0].chcaracmihog)); // Utiliza los datos de respuesta
+                console.log(data)
+
+                return data; // Devuelve los datos si es necesario
+            } catch (error) {
+                console.error(error); // Maneja errores de la solicitud
+                return "nc"
+            }
+        }
+
+        
+
+        /////////////////////////////////////////hacer un post///////////////
+
+
+        async function postData(url, data) {
+            try {
+                const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                throw new Error('Network response was not ok.');
+                }
+
+                const responseData = await response.json();
+                return responseData;
+            } catch (error) {
+                console.error('Error:', error);
+                return null;
+            }
+        }
+
+        
+
+
+
+        // Función para exportar las colecciones combinadas en formato JSON
+        function exportCombinedCollections(jsondata, nomarchi) {
+        
+            // Obtener la fecha y hora actual
+            var fechaActual = new Date();
+
+            // Obtener los componentes de la fecha y hora
+            var anio = fechaActual.getFullYear();
+            var mes = agregarCeros(fechaActual.getMonth() + 1);
+            var dia = agregarCeros(fechaActual.getDate());
+            var horas = agregarCeros(fechaActual.getHours());
+            var minutos = agregarCeros(fechaActual.getMinutes());
+            var segundos = agregarCeros(fechaActual.getSeconds());
+
+            // Crear la cadena en el formato deseado (YYYY-MM-DD HH:MM:SS)
+            var cadenaFechaHora = anio+'-'+mes+'-'+dia+'-'+horas+'-'+minutos+'-'+segundos;
+
+            console.log("fecha unica",cadenaFechaHora);
+
+            // Función para agregar ceros a valores menores que 10
+            function agregarCeros(valor) {
+                if (valor < 10) {
+                    return '0' + valor;
+                }
+                return valor;
+            }
+
+            
+            // Ejemplo de uso
+            const url = 'https://aplications.inei.gob.pe/WebEndesEncuesta/public/api/example?';
+            const data = jsondata
+
+            let arr = {}
+
+            Object.entries(jsondata).forEach(([key, value]) => {
+                console.log(key,JSON.stringify((JSON.stringify(value))))
+                if(key == "usuariosbd"){
+                    //arr.push({[key]:value})
+                    arr[key] = value
+                }else{
+                    //arr.push({[key]:JSON.stringify((JSON.stringify(value)))})
+                    arr[key] = JSON.stringify(value)
+                }
+                
+            });
+
+            console.log("arrrr",arr)
+
+            postData(url, arr)
+            .then(responseData => {
+                if (responseData) {
+                console.log('Respuesta del servidor:', responseData);
+
+                alert(`Se insertó al servidor  ${nomarchi}`)
+
+                  setTimeout(() => {
+                    window.location.href = "html/index5.html";
+                  }, 2500);
+
+                  console.log("respuesta del servidor post me voy a la pag siguiente...")  
+                }
+            })
+            .catch(error => {
+                //alert("no se inserto al servidor")
+                console.error('Error:ccc', error);
+            });
+
+            
+
+
+            console.log("jsondata",jsondata)
+            // Convertir los datos combinados a formato JSON
+            const jsonData = JSON.stringify(jsondata);
+
+            // Crear un enlace de descarga
+            const a = document.createElement('a');
+            a.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(jsonData);
+            a.download =  `${nomarchi}_${cadenaFechaHora}.json`;
+
+            // Simular un clic en el enlace para iniciar la descarga
+            a.click();
+        }
+
+
+    
+
+
+        //nomconglo////////////////////////////////////////////
+        document.querySelector("#nomconglo").addEventListener('change', e=>{
+
+            //console.log(e.target.value)
+
+            let optionsvivi = document.querySelectorAll(".recovivi")
+
+            optionsvivi.forEach(el => {
+                //console.log(el.getAttribute("data-filtro"))
+                if(el.getAttribute("data-filtro") == e.target.value){
+                    //console.log(el.value)
+                    el.setAttribute("style","display:block")
+                }
+
+                if(el.getAttribute("data-filtro") != e.target.value){
+                    //console.log(el.value)
+                    el.setAttribute("style","display:none")
+                }
+            });
+            //console.log(optionsvivi)
+
+        })
+
+
+
+
+        function onChange(event) {
+            var reader = new FileReader();
+            reader.onload = onReaderLoad;
+            reader.readAsText(event.target.files[0]);
+        }
+
+        function onReaderLoad(event){
+            //console.log(event.target.result);
+            var obj = JSON.parse(event.target.result);
+            
+            console.log(obj)
+            let confirmar = confirm(`Desea retomar con la evaluacion de\n la Srta: ${obj.usuariosbd[0].nomencu} \nconglomerado: ${obj.usuariosbd[0].codconglo} \nVivienda: ${obj.usuariosbd[0].codvivi} \nVivienda: ${obj.usuariosbd[0].codhog}`);
+        
+            console.log(confirmar)
+
+            if(confirmar){
+                console.log("devvvv")
+                obtenerDatosFinal(false)
+
+                setTimeout(() => {
+
+                    Object.entries(obj).forEach(([key, value]) => {
+                        console.log(key,value)
+
+                        agregarDatosImportadoJson(value, key)
+
+                    });
+
+                    agregarDatosImportadoJson(obj.usuariosbd)
+                    
+                    // delete obj.usuariosbd;
+                    // ImportarDatosFinalLocal(obj)
+                }, 2000);
+
+                setTimeout(() => {
+                    window.location.href = "html/index5.html";
+                    console.log("despues de 3 segundos , si encuentra valor y lo enserta localmente...")
+                }, 2500);
+            }
+
+        }
+        
+       
+    
+        document.getElementById('inputImport').addEventListener('change', onChange);
+      
+    </script>
+    <script src="index.js"></script>
+</body>
+</html>
